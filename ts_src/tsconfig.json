@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "sourceMap": false,
+        "outDir": "../static/js"
+    },
+    "compileOnSave": true
+}

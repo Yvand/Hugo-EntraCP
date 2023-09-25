@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/hugo
+{
+	"name": "Hugo - Node 18",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// Example variants: hugo, hugo_extended
+			"VARIANT": "hugo",
+			"VERSION": "latest",
+			"NODE_VERSION": "18"
+		}
+	},
+
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"tamasfe.even-better-toml",
+				"davidanson.vscode-markdownlint",
+				"budparr.language-hugo-vscode"
+			],
+			"settings": {
+			}
+		}
+	},
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		1313
+	],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "uname -a",
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node"
+}
