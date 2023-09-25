@@ -1,0 +1,67 @@
+{{ define "main" }}
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      <h1>{{ .Title }}</h1>
+    </div>
+    <div class="col-lg-9 col-xl-8 text-center">
+      <p class="lead">{{ .Params.lead | safeHTML }}</p>
+      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="{{ "/overview/introduction" }}" role="button">Get started</a>
+      <a class="btn btn-primary btn-cta rounded-pill btn-lg my-3" href="{{ site.Params.latestAssetUrl }}" role="button">Download {{ site.Params.mainAssetName }}</a>
+      <p class="meta">Open-source <a href="{{site.Params.projectUrl}}blob/master/LICENSE" target="_blank" rel="noopener">Apache-2.0 License</a>. {{ site.Params.mainAssetName }} <a href="{{ .Site.Data.project.latestReleaseUrl }}" target="_blank" rel="noopener">{{ site.Params.latestAssetVersion }}</a>.</p>
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "sidebar-prefooter" }}
+  {{ if site.Data.doks.backgroundDots -}}
+  <div class="d-flex justify-content-start">
+    <div class="bg-dots"></div>
+  </div>
+  {{ end -}}
+  <section class="section section-md section-features">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-5">
+          <h2 class="h4">Open</h2>
+          <p>
+            EntraCP is completely free and <a href="https://github.com/Yvand/AzureCP" target="_blank">open source</a>.<br>
+            It collects <a href="{{ "privacy-policy/" | relURL }}">no data or telemetry</a>.<br>
+            Total downloads: <span id="TotalDownloadCount">-</span><br>
+            Downloads of latest version: <span id="LatestReleaseDownloadCount">-</span>
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Top features</h2>
+          <p class="text-left">
+            Fixes the search in the people picker.<br>
+            Gets group membership (augmentation).<br>
+            Connects to multiple Microsoft Entra ID tenants.<br>
+            Compatible with all the supported versions of SharePoint Server.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <h2 class="h4">Highly customizable</h2>
+          <p>
+            Administrators can configure and customize many things, through PowerShell or administration pages.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
+
+{{ define "sidebar-footer" }}
+{{ if site.Data.doks.sectionFooter -}}
+<section class="section section-md container-fluid bg-light">
+  <div class="row justify-content-center text-center">
+    <div class="col-lg-7">
+      <h2 class="mt-2"></h2>
+      <!-- {{ site.Data.doks.footer }} -->
+    </div>
+  </div>
+</section>
+{{ end -}}
+{{ end }}
