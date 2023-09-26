@@ -39,5 +39,12 @@ Complete the steps below on the server running the central administration:
 
 1. Visit central administration > System Settings > Manage farm solutions: Wait until solution status shows "Deployed".
    {{< alert icon="💡" text="Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2." />}}
-  > If status shows "Error", restart the SharePoint timer service on the servers where the depployment failed, start a new PowerShell process and run `Update-SPSolution` again.
+   > If status shows "Error", restart the SharePoint timer service on the servers where the depployment failed, start a new PowerShell process and run `Update-SPSolution` again.
 
+## Finalize the installation
+
+On each SharePoint server, restart the IIS and the SharePoint timer services:
+
+```powershell
+Restart-Service -Name @("W3SVC", "SPTimerV4")
+```
