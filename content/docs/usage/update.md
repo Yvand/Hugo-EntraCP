@@ -1,7 +1,7 @@
 ---
 title: "Update"
-description: "Update AzureCP"
-lead: "Update AzureCP in your SharePoint farm"
+description: "Update EntraCP"
+lead: "Update EntraCP in your SharePoint farm"
 date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false

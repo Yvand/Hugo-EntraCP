@@ -12,7 +12,7 @@ var GitHubStatistics;
             $.ajax({
                 method: "GET",
                 crossDomain: true,
-                data: { project: "Yvand/AzureCP" },
+                data: { project: "Yvand/EntraCP" },
                 dataType: "jsonp",
                 // mimeType: "application/javascript",
                 jsonpCallback: "GitHubStatistics.RepoStats.parseGitHubStatisticsResponse",

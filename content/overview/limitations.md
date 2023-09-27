@@ -1,7 +1,7 @@
 ---
 title: "Limitations"
 description: ""
-lead: "AzureCP has limitations which SharePoint administrators should be aware of before installing it."
+lead: "EntraCP has limitations which SharePoint administrators should be aware of before installing it."
 date: 2021-06-01T12:35:32Z
 lastmod: 2021-06-01T12:35:32Z
 draft: false
@@ -14,7 +14,7 @@ toc: true
 ---
 
 
-## When AzureCP cannot be used
+## When EntraCP cannot be used
 
 - SharePoint servers have no network access to Azure Active Directory.
 - Cmdlet `New-SPTrustedIdentityTokenIssuer` was run with the switch `-UseDefaultConfiguration`.
