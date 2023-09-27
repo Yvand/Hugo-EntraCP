@@ -57,7 +57,7 @@ Run the following script on the server running the central administration, in a 
     EntraCP.wsp uses deployment mode "Application", which by design makes its deployment much more secure than AzureCP.
     Because contrary to AzureCP, running Install-SPSolution does NOT install the features in the farm, which prevents conflicts.
 .LINK
-    https://www.AzureCP.com/docs/usage/installation/
+    https://entracp.yvand.net/docs/usage/installation/
 #>
 
 $product = "EntraCP"

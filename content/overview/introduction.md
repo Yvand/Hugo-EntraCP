@@ -13,7 +13,7 @@ weight: 100
 toc: true
 ---
 
-EntraCP is a claims provider that runs in your SharePoint Server farm, to connect it to your Microsoft Entra ID tenant.  
+EntraCP (formerly AzureCP) is a claims provider that runs in your SharePoint Server farm, to connect it to your Microsoft Entra ID tenant.  
 It is useful in federated authentication (either with [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication)), to improve the user experience and fill some gaps in this scenario.
 
 ## EntraCP or AzureCP?

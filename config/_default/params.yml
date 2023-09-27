@@ -2,7 +2,7 @@ mainSections: [docs, docs-azurecp]
 alertText : 'AzureCP becomes EntraCP, a new version with major improvements! <a class="alert-link stretched-link fw-normal" href="/blog/announcing-entracp/">Read more information</a>'
 # Project data
 projectName: "EntraCP"
-mainAssetName: "EntraCP"
+mainAssetName: "EntraCP.wsp"
 latestAssetUrl: "https://github.com/Yvand/AzureCP/releases/download/nightly/EntraCP.wsp"
 latestAssetVersion: "v1.0.0.0"
 projectUrl: "https://github.com/Yvand/AzureCP/"
@@ -49,7 +49,7 @@ image:
 
 # SEO (@hyas/seo)
 seo:
-  description: ""
+  description: "EntraCP for SharePoint Server"
   generate:
     title: true
     meta: true
@@ -60,7 +60,7 @@ seo:
       breadcrumbs: true
   title_tag:
     separator: "|"
-    home_text: ""
+    home_text: "EntraCP (formerly AzureCP) is a claims provider that connects SharePoint to your Microsoft Entra ID tenant, in federated authentication."
   og_article_types: [post, posts, blog, news, article, articles, event, events, course, courses]
   jsonld_article_types: [article, articles]
   jsonld_news_article_types: [news, updates]

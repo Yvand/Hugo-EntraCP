@@ -51,7 +51,7 @@ Execute the following steps:
       Run this script on ALL SharePoint servers running the service "Microsoft SharePoint Foundation Web Application" and/or the central administration, sequentially (not in parallel), starting with the server running the central administration.
       The script does not require any modification, you only need to set the variable $packagefullpath with the path to the solution file (used only on the 1st server)
   .LINK
-      https://www.AzureCP.com/docs/usage/install/
+      https://entracp.yvand.net/docs-azurecp/usage/install/
   #>
 
   # To use this script, you only need to edit the variable $packagefullpath below
@@ -69,8 +69,8 @@ Execute the following steps:
 
   # Check 2: Install-SPSolution will fail if any feature in the WSP solution is already installed on the current server
   if ($null -ne (Get-SPFeature| ?{$_.DisplayName -like "$claimsprovider*"})) {
-      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this."
-      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://www.AzureCP.com/docs/help/fix-setup-issues/ to fix this.")
+      Write-Error "Cannot continue because current server already has features of $claimsprovider, Visit https://entracp.yvand.net/docs/help/fix-setup-issues/ to fix this."
+      throw ("Cannot continue because current server already has features of $claimsprovider, Visit https://entracp.yvand.net/docs/help/fix-setup-issues/ to fix this.")
   }
 
   Write-Host "All checks passed on this server, continuing..."

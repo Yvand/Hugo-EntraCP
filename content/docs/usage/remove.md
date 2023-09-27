@@ -74,7 +74,7 @@ Run the following script on the server running the central administration, to co
     Run this script ONLY on the server running the central administration, in a new PowerShell process.
     The script does not require any modification.
 .LINK
-    https://www.AzureCP.com/docs/usage/remove/
+    https://entracp.yvand.net/docs/usage/remove/
 #>
 
 $product = "EntraCP"
