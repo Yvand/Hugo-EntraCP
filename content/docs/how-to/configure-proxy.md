@@ -14,7 +14,7 @@ weight: 200
 toc: true
 ---
 
-In EntraCP, the proxy is now set directly in the AzureCP configuration, you no longer need to set it on all the .config files manually.
+In EntraCP, the proxy is now set directly in the EntraCP configuration, you no longer need to set it on all the .config files manually.
 
 ## Configure the proxy for EntraCP
 
@@ -30,8 +30,8 @@ $config.ApplySettings($settings, $true)
 
 ## Configure the proxy for Windows
 
-AzureCP connects to multiple, HTTPS Microsoft Graph sites, and Windows will try to validite their certificates using their CRL endpoints.  
-If Windows cannot connect to those CRL endpoints, the typical behavior is random timeouts that last for a few minutes, during which AzureCP (and SharePoint) hangs.  
+EntraCP connects to multiple, HTTPS Microsoft Graph sites, and Windows will try to validite their certificates using their CRL endpoints.  
+If Windows cannot connect to those CRL endpoints, the typical behavior is random timeouts that last for a few minutes, during which EntraCP (and SharePoint) hangs.  
 To avoid this, you also need to configure the proxy for Windows using `netsh winhttp` command ([more info](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/configure-proxy-internet)):
 
 ```shell
