@@ -120,7 +120,7 @@ Do the following on the server running the central administration:
 
 1. Navigate to the central administration > Security > Manage farm solutions > click on "entracp.wsp" > Deploy solution.
 1. Monitor the deployment of the solution and wait for it to be fully deployed.
-1. Install the features present in the solution
+1. Install the features present in the solution:
 
     ```powershell
     Install-SPFeature -SolutionId "dd03bdd7-0645-475e-a852-f180b8bc8191" -AllExistingFeatures

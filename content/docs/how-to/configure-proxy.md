@@ -21,8 +21,8 @@ In EntraCP, the proxy is now set directly in the AzureCP configuration, you no l
 The proxy can be set in the central administration > Security > EntraCP global configuration, or using PowerShell:
 
 ```powershell
-Add-Type -AssemblyName "Yvand.AzureCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
-$config = [Yvand.AzureCP]::GetConfiguration()
+Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
+$config = [Yvand.EntraClaimsProvider.EntraCP]::GetConfiguration()
 $settings = $config.Settings
 $settings.ProxyAddress = "http://localhost:8888"
 $config.ApplySettings($settings, $true)
