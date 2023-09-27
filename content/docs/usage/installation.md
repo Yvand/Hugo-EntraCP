@@ -22,7 +22,7 @@ Installing EntraCP is much easier and safer than AzureCP by design because it us
 
 ## Download the required assets
 
-Browse to the [latest release](https://github.com/Yvand/AzureCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
+Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
 
 ## Set the required assembly bindings
 

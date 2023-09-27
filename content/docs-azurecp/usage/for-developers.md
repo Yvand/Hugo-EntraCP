@@ -25,7 +25,7 @@ However, there are still some scenarios where a developer may want to customize 
 ## How to proceed
 
 For that, the class AzureCP can be inherited to create a class that will be a new, unique claims provider in SharePoint.  
-[Each release](https://github.com/Yvand/AzureCP/releases) comes with a Visual Studio sample project "AzureCP.Developers.zip". It contains several sample classes that demonstrate various customizations capabilities.
+[Each release](https://github.com/Yvand/EntraCP/releases) comes with a Visual Studio sample project "AzureCP.Developers.zip". It contains several sample classes that demonstrate various customizations capabilities.
 
 ## Things to know
 

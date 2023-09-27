@@ -22,7 +22,7 @@ Follow this article to update EntraCP in your SharePoint farm.
 
 Complete the steps below on **all the SharePoint servers**:
 
-1. Browse to the [latest release](https://github.com/Yvand/AzureCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
+1. Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
 1. Open the `machine.config` file (`%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config`) and locate the XML node `<runtime>`.
 1. If needed, update the `machine.config` to reflect the changes in `assembly-bindings.config`.
 

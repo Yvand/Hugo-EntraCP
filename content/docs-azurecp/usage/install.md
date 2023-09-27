@@ -27,7 +27,7 @@ This page will guide you through the steps to install AzureCP in a safe and reli
 
 Execute the following steps:
 
-- Download [the latest version](https://github.com/Yvand/AzureCP/releases/latest) of AzureCP.wsp.
+- Download [the latest version](https://github.com/Yvand/EntraCP/releases/latest) of AzureCP.wsp.
 - Install and deploy the solution, using either the __simple__ or the __safe__ method:
   - __Simple__ method: Recommended for single-server farms only:
 
@@ -111,7 +111,7 @@ This step is **very important** and applies to **all** SharePoint servers which 
 < alert icon="💡" text="This step must be executed during both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios." />
 For each of those servers, complete the steps below to manually add/update AzureCP bits (azurecp.dll and its dependent assemblies) in the GAC:
 
-- Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/AzureCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
+- Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/EntraCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
 - Use [7-zip](https://www.7-zip.org/) to extract the DLLs in a local folder.
 - Run the script below to add the assemblies in the GAC:
 
