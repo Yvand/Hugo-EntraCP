@@ -13,7 +13,7 @@ __TLDR__: Neither this site nor this project collects any personal data.
 
 ## Project privacy policy
 
-- AzureCP stores the data entered by the SharePoint administrator in the SharePoint configuration database only.
+- EntraCP stores the data entered by the SharePoint administrator in the SharePoint configuration database only.
 - No personal information is collected.
 - No information is shared with, sent to or sold to third-parties.
 - No information is shared with advertising companies.
