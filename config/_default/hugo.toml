@@ -87,3 +87,4 @@ rel  = "sitemap"
 
 [options]
   fullWidth = true
+  highLight = true
