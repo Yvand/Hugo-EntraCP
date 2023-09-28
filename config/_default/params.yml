@@ -3,6 +3,7 @@ alertText : 'AzureCP becomes EntraCP, a new version with major improvements! <a 
 # Project data
 projectName: "EntraCP"
 mainAssetName: "EntraCP.wsp"
+latestReleaseUrl: "https://github.com/Yvand/EntraCP/releases/latest"
 latestAssetUrl: "https://github.com/Yvand/EntraCP/releases/download/v22.0.20230927.29/EntraCP.wsp"
 latestAssetVersion: "v22.0.20230927.29"
 projectUrl: "https://github.com/Yvand/EntraCP/"
