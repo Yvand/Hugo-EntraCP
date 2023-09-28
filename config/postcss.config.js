@@ -48,7 +48,7 @@ module.exports = {
           // './node_modules/@hyas/doks-core/assets/scss/components/_diagrams.scss',
           './node_modules/@hyas/doks-core/assets/scss/components/_modals.scss',
           // './node_modules/@hyas/doks-core/assets/scss/components/_syntax.scss',
-          './node_modules/highlight.js/scss/base16/unikitty-light.scss',
+          './node_modules/highlight.js/scss/github-dark.scss',
           './node_modules/@hyas/doks-core/assets/scss/components/_search.scss',
           './node_modules/@hyas/doks-core/assets/scss/common/_dark.scss',
           './node_modules/bootstrap/scss/_dropdown.scss',
