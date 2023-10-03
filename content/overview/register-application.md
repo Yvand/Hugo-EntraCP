@@ -65,19 +65,17 @@ It can be used in Azure cloud shell or in a local shell:
 az login #--allow-no-subscriptions
 
 appName="EntraCP shell"
-
 echo "Create application '$appName'..."
-appId=$(az ad app create --display-name "$appName" --key-type Password --query 'id' -o tsv)
+appId=$(az ad app create --display-name "$appName" --query 'id' -o tsv)
 
 echo "Create service principal for application id '$appId', and gets its objectId (stored in field id)..."
 spObjectId=$(az ad sp create --id $appId --query 'id' -o tsv)
 echo "Application '$appName' was created with client id '$appId', and its service principal with objectId '$spObjectId'"
 
-# Create a secret
 echo "Create client secret for the app id '$appId'..."
 appSecret=$(az ad app credential reset --id $appId --query 'password' --only-show-errors -o tsv)
 
-# Retrieve the id of the permissions to grant
+# Retrieve the id of each permission to grant
 microsoftGraphId="00000003-0000-0000-c000-000000000000"
 userPermName="User.Read.All"
 groupPermName="GroupMember.Read.All"
@@ -100,10 +98,8 @@ az ad app update --id $appId --required-resource-accesses "[{
         ]
         }]"
 
-# Wait before granting the permissions to avoid error "Request_ResourceNotFound" on the service principal just created
-# sleep 20
 echo "Grant admin consent to Microsoft Graph permissions $userPermName (id '$userPermId') and $groupPermName (id '$groupPermId') for service principal '$spObjectId'..."
-# Grant permissions to the service principal - https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0
+# Grant admin consent by granting permissions to the service principal - https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments
 az rest --method POST \
         --uri "https://graph.microsoft.com/v1.0/servicePrincipals/$spObjectId/appRoleAssignments" \
         --body "{
