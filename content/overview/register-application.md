@@ -3,7 +3,7 @@ title: "Grant permissions to your tenant"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2021-10-03
 draft: false
 images: []
 menu:
@@ -45,7 +45,7 @@ You can register the application using either:
 
 ### Using m365 cli
 
-[M365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes a single command to create the application, create a secret, set the permissions and grant the admin consent:
+[m365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes a single command to create the application, create a secret, set the permissions and grant the admin consent:
 
 ```bash
 m365 login
@@ -59,30 +59,31 @@ This bash script creates the application, adds a secret, sets the permissions an
 It can be used in Azure cloud shell or in a local shell:
 
 ```bash
-# Sign-in to Azure AD tenant. Use --allow-no-subscriptions if it doesn't have a subscription
-az login --allow-no-subscriptions
+#!/bin/bash
 
-appName="EntraCP"
+# Sign-in to your Entra ID tenant. Use --allow-no-subscriptions only if it doesn't have a subscription
+az login #--allow-no-subscriptions
 
-echo "Creating application '$appName'..."
-az ad app create --display-name "$appName" --key-type Password --credential-description 'client secret'
-appId=$(az ad app list --display-name "$appName" --query '[].[appId]' -o tsv)
+appName="EntraCP shell"
 
-echo "Creating service principal for application id '$appId'..."
-az ad sp create --id $appId
-# Get the objectId of the service principal, needed to grant the required permissions
-spObjectId=$(az ad sp list --filter "appId eq '$appId'" --query '[].[appId, objectId, appDisplayName]' -o tsv | cut -f2)
+echo "Create application '$appName'..."
+appId=$(az ad app create --display-name "$appName" --key-type Password --query 'id' -o tsv)
+
+echo "Create service principal for application id '$appId', and gets its objectId (stored in field id)..."
+spObjectId=$(az ad sp create --id $appId --query 'id' -o tsv)
 echo "Application '$appName' was created with client id '$appId', and its service principal with objectId '$spObjectId'"
 
 # Create a secret
-appSecret=$(az ad app credential reset --id $appId -o tsv | cut -f3)
+echo "Create client secret for the app id '$appId'..."
+appSecret=$(az ad app credential reset --id $appId --query 'password' --only-show-errors -o tsv)
 
 # Retrieve the id of the permissions to grant
-userPermId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='User.Read.All'].id" --output tsv)
-groupPermId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "appRoles[?value=='GroupMember.Read.All'].id" --output tsv)
-msGraphResourceId=$(az ad sp show --id 00000003-0000-0000-c000-000000000000 --query "objectId" --output tsv)
+userPermId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "appRoles[?value=='User.Read.All'].id" --output tsv)
+groupPermId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "appRoles[?value=='GroupMember.Read.All'].id" --output tsv)
+msGraphResourceId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "id" --output tsv)
 
 # Add the permissions required to the definition of the application (optional as it is just a declaration of the permissions needed)
+echo "Grant permissions 'User.Read.All' and 'GroupMember.Read.All' to the app id '$appId'..."
 az ad app update --id $appId --required-resource-accesses "[{
         \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",
         \"resourceAccess\": [{
@@ -96,17 +97,17 @@ az ad app update --id $appId --required-resource-accesses "[{
         ]
         }]"
 
-echo "Grant admin consent to Microsoft Graph permissions User.Read.All (id '$userPermId') and GroupMember.Read.All (id '$groupPermId') for service principal '$spObjectId'..."
 # Wait before granting the permissions to avoid error "Request_ResourceNotFound" on the service principal just created
-sleep 20
-# Grant permissions to the service principal of the application
+# sleep 20
+echo "Grant admin consent to Microsoft Graph permissions User.Read.All (id '$userPermId') and GroupMember.Read.All (id '$groupPermId') for service principal '$spObjectId'..."
+# Grant permissions to the service principal - https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0
 az rest --method POST \
         --uri "https://graph.microsoft.com/v1.0/servicePrincipals/$spObjectId/appRoleAssignments" \
         --body "{
         \"principalId\": \"$spObjectId\",
         \"resourceId\": \"$msGraphResourceId\",
         \"appRoleId\": \"$userPermId\"
-        }"
+        }" 1> /dev/null
 
 az rest --method POST \
         --uri "https://graph.microsoft.com/v1.0/servicePrincipals/$spObjectId/appRoleAssignments" \
@@ -114,7 +115,8 @@ az rest --method POST \
         \"principalId\": \"$spObjectId\",
         \"resourceId\": \"$msGraphResourceId\",
         \"appRoleId\": \"$groupPermId\"
-        }"
+        }" 1> /dev/null
 
-echo "Application $appName was created with client id '$appId' and client secret '$appSecret'"
+echo "Application '$appName' was created successfully with client id '$appId' and client secret '$appSecret'. \
+App-only permissions 'User.Read.All' and 'GroupMember.Read.All' were granted, and admin consent applied."
 ```
