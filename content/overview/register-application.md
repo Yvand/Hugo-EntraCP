@@ -61,7 +61,7 @@ It can be used in Azure cloud shell or in a local shell:
 ```bash
 #!/bin/bash
 
-# Sign-in to your Entra ID tenant. Use --allow-no-subscriptions only if it doesn't have a subscription
+# Sign-in to your Entra ID tenant. Use --allow-no-subscriptions if it doesn't have a subscription
 az login #--allow-no-subscriptions
 
 appName="EntraCP shell"
@@ -78,14 +78,17 @@ echo "Create client secret for the app id '$appId'..."
 appSecret=$(az ad app credential reset --id $appId --query 'password' --only-show-errors -o tsv)
 
 # Retrieve the id of the permissions to grant
-userPermId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "appRoles[?value=='User.Read.All'].id" --output tsv)
-groupPermId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "appRoles[?value=='GroupMember.Read.All'].id" --output tsv)
-msGraphResourceId=$(az ad sp show --id '00000003-0000-0000-c000-000000000000' --query "id" --output tsv)
+microsoftGraphId="00000003-0000-0000-c000-000000000000"
+userPermName="User.Read.All"
+groupPermName="GroupMember.Read.All"
+userPermId=$(az ad sp show --id "$microsoftGraphId" --query "appRoles[?value=='$userPermName'].id" --output tsv)
+groupPermId=$(az ad sp show --id "$microsoftGraphId" --query "appRoles[?value=='$groupPermName'].id" --output tsv)
+msGraphResourceId=$(az ad sp show --id "$microsoftGraphId" --query "id" --output tsv)
 
 # Add the permissions required to the definition of the application (optional as it is just a declaration of the permissions needed)
-echo "Grant permissions 'User.Read.All' and 'GroupMember.Read.All' to the app id '$appId'..."
+echo "Grant permissions '$userPermName' and '$groupPermName' to the app id '$appId'..."
 az ad app update --id $appId --required-resource-accesses "[{
-        \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",
+        \"resourceAppId\": \"$microsoftGraphId\",
         \"resourceAccess\": [{
                         \"id\": \"$userPermId\",
                         \"type\": \"Role\"
@@ -99,7 +102,7 @@ az ad app update --id $appId --required-resource-accesses "[{
 
 # Wait before granting the permissions to avoid error "Request_ResourceNotFound" on the service principal just created
 # sleep 20
-echo "Grant admin consent to Microsoft Graph permissions User.Read.All (id '$userPermId') and GroupMember.Read.All (id '$groupPermId') for service principal '$spObjectId'..."
+echo "Grant admin consent to Microsoft Graph permissions $userPermName (id '$userPermId') and $groupPermName (id '$groupPermId') for service principal '$spObjectId'..."
 # Grant permissions to the service principal - https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments?view=graph-rest-1.0
 az rest --method POST \
         --uri "https://graph.microsoft.com/v1.0/servicePrincipals/$spObjectId/appRoleAssignments" \
@@ -118,5 +121,5 @@ az rest --method POST \
         }" 1> /dev/null
 
 echo "Application '$appName' was created successfully with client id '$appId' and client secret '$appSecret'. \
-App-only permissions 'User.Read.All' and 'GroupMember.Read.All' were granted, and admin consent applied."
+App-only permissions '$userPermName' and '$groupPermName' were granted, and admin consent applied."
 ```
