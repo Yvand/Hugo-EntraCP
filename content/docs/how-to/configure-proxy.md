@@ -28,18 +28,18 @@ $settings.ProxyAddress = "http://localhost:8888"
 $config.ApplySettings($settings, $true)
 ```
 
-## Configure the proxy for Windows
+## Configure the system proxy for certificate validation
 
-EntraCP connects to multiple, HTTPS Microsoft Graph sites, and Windows will try to validite their certificates using their CRL endpoints.  
-If Windows cannot connect to those CRL endpoints, the typical behavior is random timeouts that last for a few minutes, during which EntraCP (and SharePoint) hangs.  
-To avoid this, you also need to configure the proxy for Windows using `netsh winhttp` command ([more info](https://learn.microsoft.com/en-us/microsoft-365/security/defender-endpoint/configure-proxy-internet)):
+EntraCP connects to multiple Microsoft Graph endpoints, secured with HTTPS.  
+Windows will try to validate their certificate by connecting to their CRL endpoints.  
+If Windows cannot connect to those CRL, the typical behavior is random timeouts that last for a few minutes, during which EntraCP (and SharePoint) hangs.  
+Windows uses the system-wide proxy, which is configured using `netsh winhttp` command ([more info](https://support.microsoft.com/en-us/topic/how-the-windows-update-client-determines-which-proxy-server-to-use-to-connect-to-the-windows-update-website-08612ae5-3722-886c-f1e1-d012516c22a1)):
 
 ```shell
 # Show proxy configuration
 netsh winhttp show proxy
 # Set proxy configuration
-netsh winhttp set proxy <proxy>:<port>
-netsh winhttp set proxy "10.0.0.6:8080"
+netsh winhttp set proxy proxyservername:portnumber
 # Reset proxy configuration
 netsh winhttp reset proxy
 ```
