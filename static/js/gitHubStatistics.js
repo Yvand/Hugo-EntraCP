@@ -5,14 +5,17 @@ var GitHubStatistics;
 (function (GitHubStatistics) {
     var RepoStats = /** @class */ (function () {
         function RepoStats() {
-            this.url = "https://azfunc-repository-stats.azurewebsites.net/api/GetLatestDocument";
+            this.url = "https://repository-statistics.azurewebsites.net/api/GetData";
         }
         RepoStats.prototype.getLatestStat = function () {
-            console.log("Sending query to " + this.url);
+            // console.log("Sending query to " + this.url);
             $.ajax({
                 method: "GET",
                 crossDomain: true,
-                data: { project: "Yvand/EntraCP" },
+                data: {
+                    project: "Yvand/EntraCP",
+                    code: "IHZenT9YrvWCXI2YOg5HBGAXHjlAQjozAL2SFR-E53lTAzFuVYTLjw==",
+                },
                 dataType: "jsonp",
                 // mimeType: "application/javascript",
                 jsonpCallback: "GitHubStatistics.RepoStats.parseGitHubStatisticsResponse",
