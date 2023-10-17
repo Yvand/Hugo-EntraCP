@@ -31,7 +31,7 @@ Merge-SPLogFile -Path "C:\Data\EntraCP_logging.log" -Overwrite -Area "EntraCP" -
 
 You can use [ULS Viewer](https://www.microsoft.com/en-us/download/details.aspx?id=44020) to inspect the logs.
 
-## Use the built-in trobleshooting page
+## Use the built-in troubleshooting page
 
 EntraCP comes with a built-in troubleshooting page, located in `16\TEMPLATE\ADMIN\EntraCP\TroubleshootEntraCP.aspx`.  
 It is primarily designed to:
