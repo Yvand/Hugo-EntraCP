@@ -26,7 +26,7 @@
     "postinstall": "shx rm -rf node_modules/.bin/hugo && shx mkdir node_modules/.bin/hugo && shx cp node_modules/gethyas/node_modules/.bin/hugo/* node_modules/.bin/hugo"
   },
   "dependencies": {
-    "@hyas/doks-core": "^1.0.7"
+    "@hyas/doks-core": "^1.1.0"
   },
   "engines": {
     "node": ">=16.12.0"
