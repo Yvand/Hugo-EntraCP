@@ -5,7 +5,7 @@ projectName: "EntraCP"
 mainAssetName: "EntraCP.wsp"
 latestReleaseUrl: "https://github.com/Yvand/EntraCP/releases/latest"
 latestAssetUrl: "https://github.com/Yvand/EntraCP/releases/download/v22.0.20230927.29/EntraCP.wsp"
-latestAssetVersion: "v22.0.20230927.29"
+latestAssetVersion: "v23.0.20231121.30"
 projectUrl: "https://github.com/Yvand/EntraCP/"
 
 # Images (@hyas/images)

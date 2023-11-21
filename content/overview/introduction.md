@@ -20,7 +20,7 @@ It is useful in federated authentication (either with [WS-Federation](https://do
 
 ### EntraCP
 
-This is the [latest version]({{< relref "/blog/announcing-entracp" >}}) that should be used on all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019 and SharePoint 2016.  
+This is the [new version]({{< relref "/blog/announcing-entracp" >}}) that should be used on all the supported versions of SharePoint Server: SharePoint Subscription, SharePoint 2019 and SharePoint 2016.  
 [Go to documentation]({{< relref "/docs/overview" >}}).
 
 ### AzureCP
