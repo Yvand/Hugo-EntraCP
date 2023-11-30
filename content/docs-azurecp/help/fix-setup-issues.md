@@ -88,4 +88,4 @@ Remove-SPSolution "AzureCP.wsp" -Confirm:$false
 
 Close PowerShell.  
 
-![Image](assets/images/people-picker-EntraCP.png)
+{{< img src="assets/images/people-picker-EntraCP.png" alt="A bird flying through a field of tall grass" >}}
