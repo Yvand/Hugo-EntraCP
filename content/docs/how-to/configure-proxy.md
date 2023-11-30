@@ -1,9 +1,9 @@
 ---
-title: "Configure proxy"
+title: "Configure the proxy"
 description: ""
 lead: ""
 date: 2023-09-14
-lastmod: 2023-09-14
+lastmod: 2023-11-30
 draft: false
 images: []
 menu:
@@ -14,11 +14,12 @@ weight: 200
 toc: true
 ---
 
-In EntraCP, the proxy is now set directly in the EntraCP configuration, you no longer need to set it on all the .config files manually.
+If the SharePoint servers access to internet through a proxy, it must be configured for both EntraCP and Windows (to validate the certificates).
 
 ## Configure the proxy for EntraCP
 
-The proxy can be set in the central administration > Security > EntraCP global configuration, or using PowerShell:
+In EntraCP, the proxy is set directly in EntraCP's configuration (no need to set it on any web.config file).  
+It can be set in the central administration > Security > EntraCP global configuration, or using PowerShell:
 
 ```powershell
 Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
@@ -28,18 +29,48 @@ $settings.ProxyAddress = "http://localhost:8888"
 $config.ApplySettings($settings, $true)
 ```
 
-## Configure the system proxy for certificate validation
+## Configure the proxy for certificate validation
 
-EntraCP connects to multiple Microsoft Graph endpoints, secured with HTTPS.  
-Windows will try to validate their certificate by connecting to their CRL endpoints.  
-If Windows cannot connect to those CRL, the typical behavior is random timeouts that last for a few minutes, during which EntraCP (and SharePoint) hangs.  
-Windows uses the system-wide proxy, which is configured using `netsh winhttp` command ([more info](https://support.microsoft.com/en-us/topic/how-the-windows-update-client-determines-which-proxy-server-to-use-to-connect-to-the-windows-update-website-08612ae5-3722-886c-f1e1-d012516c22a1)):
+EntraCP connects to Microsoft Graph using HTTPS, and Windows will try to validate the certificates using the links in their CRL.  
+If Windows cannot connect to those links, the typical behavior is random timeouts during a few minutes while using the people picker / EntraCP.  
+Apply the steps below on each SharePoint server to fully configure the proxy:
 
-```shell
-# Show proxy configuration
-netsh winhttp show proxy
-# Set proxy configuration
-netsh winhttp set proxy proxyservername:portnumber
-# Reset proxy configuration
-netsh winhttp reset proxy
-```
+- Configure the WinHTTP proxy
+
+Run netsh as shown below in an elevated command prompt:
+
+  ```shell
+  # Show the proxy configuration
+  netsh winhttp show proxy
+  # Set the proxy
+  netsh winhttp set proxy proxyservername:portnumber
+  # Remove the proxy
+  netsh winhttp reset proxy
+  ```
+
+- Configure the WinINET proxy machine wide:
+
+The PowerShell script below sets the WinINET proxy config machine wide (instead of per-user by default)
+
+  ```powershell
+  # Based on https://blog.workinghardinit.work/2020/03/06/configure-wininet-proxy-server-with-powershell/
+  # Edit the variables below to fit your environment
+  $proxy = "127.0.0.1:8888"
+  $proxyEnabled = 1
+  $bypasslist = "bypassdomain.test;<local>"
+
+  # Enable machine wide proxy settings (0: per-machine proxy / 1 (or not set): per-user)
+  New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser" -PropertyType DWORD -Value 0 -Force
+
+  $proxyBytes = [system.Text.Encoding]::ASCII.GetBytes($proxy)
+  $bypassBytes = [system.Text.Encoding]::ASCII.GetBytes($bypasslist)
+  $defaultConnectionSettings = [byte[]]@(@(70, 0, 0, 0, 0, 0, 0, 0, $proxyEnabled, 0, 0, 0, $proxyBytes.Length, 0, 0, 0) + $proxyBytes + @($bypassBytes.Length, 0, 0, 0) + $bypassBytes + @(1..36 | % { 0 }))
+
+  $registryPaths = @("HKLM:\Software\Microsoft\Windows\CurrentVersion\Internet Settings", "HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Internet Settings")
+  foreach ($registryPath in $registryPaths) {
+      Set-ItemProperty -Path $registryPath -Name ProxyServer -Value $proxy
+      Set-ItemProperty -Path $registryPath -Name ProxyEnable -Value $proxyEnabled
+      Set-ItemProperty -Path $registryPath -Name ProxyOverride -Value $bypasslist
+      Set-ItemProperty -Path "$registryPath\Connections" -Name DefaultConnectionSettings -Value $defaultConnectionSettings
+  }
+  ```
