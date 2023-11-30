@@ -43,7 +43,7 @@ Run netsh as shown below in an elevated command prompt:
   # Show the proxy configuration
   netsh winhttp show proxy
   # Set the proxy
-  netsh winhttp set proxy proxyservername:portnumber
+  netsh winhttp set proxy proxyservername:portnumber bypass-list="*.contoso.local;<local>"
   # Remove the proxy
   netsh winhttp reset proxy
   ```
@@ -57,7 +57,7 @@ The PowerShell script below sets the WinINET proxy config machine wide (instead 
   # Edit the variables below to fit your environment
   $proxy = "127.0.0.1:8888"
   $proxyEnabled = 1
-  $bypasslist = "bypassdomain.test;<local>"
+  $bypasslist = "*.contoso.local;<local>"
 
   # Enable machine wide proxy settings (0: per-machine proxy / 1 (or not set): per-user)
   New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings" -Name "ProxySettingsPerUser" -PropertyType DWORD -Value 0 -Force
