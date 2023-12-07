@@ -16,8 +16,8 @@ toc: true
 
 Follow this article to properly, safely uninstall EntraCP from your SharePoint farm.  
 
-{{< alert icon="💡" text="Do not merely retract the solution! The features must be manually deactivated and uninstalled before the solution is retracted." />}}
-{{< alert icon="💡" text="Do all the operations below on the server running the central administration, and in a new PowerShell process." />}}
+xxalert icon="💡" text="Do not merely retract the solution! The features must be manually deactivated and uninstalled before the solution is retracted." />}}
+xxalert icon="💡" text="Do all the operations below on the server running the central administration, and in a new PowerShell process." />}}
 
 ## Reset property ClaimProviderName in the SPTrustedIdentityTokenIssuer
 
@@ -114,7 +114,7 @@ if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "$featureNamePrefix.$produ
 
 ## Remove the assembly bindings
 
-{{< alert icon="💡" text="The steps in this section must be completed on all the SharePoint servers, after the solution was uninstalled." />}}
+xxalert icon="💡" text="The steps in this section must be completed on all the SharePoint servers, after the solution was uninstalled." />}}
 
 1. Open the `machine.config` file (`%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config`) in a text editor.
 1. Locate the node `<runtime>`.

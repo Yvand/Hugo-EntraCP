@@ -20,7 +20,7 @@ Follow this article to create an app registration in your Microsoft Entra ID ten
 
 EntraCP requires permissions `GroupMember.Read.All` and `User.Read.All`, of type application (not delegated):
 
-![Image](assets/images/aad-entracp-permissions.png "At the end of the configuration, the permissions should be exactly like this.")
+![Image](images/aad-entracp-permissions.png "At the end of the configuration, the permissions should be exactly like this.")
 
 ## Create the app registration
 

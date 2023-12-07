@@ -14,7 +14,7 @@ weight: 190
 toc: true
 ---
 
-{{< alert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." />}}
+xxalert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." />}}
 
 ## Reset property ClaimProviderName in the SPTrustedIdentityTokenIssuer
 
