@@ -41,6 +41,7 @@ images = ["cover.png"]
   # Global alert
   alert = true # false (default) or true
   alertDismissable = true # true (default) or false
+  alertText = "my alert"
 
   # Bootstrap
   bootstrapJavascript = false # false (default) or true
