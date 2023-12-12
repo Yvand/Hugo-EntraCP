@@ -19,7 +19,7 @@ images = ["cover.png"]
 
   # Navbar
   navbarSticky = true # true (default) or false
-  containerBreakpoint = "lg" # "", "sm", "md", "lg" (default), "xl", "xxl", or "fluid"
+  containerBreakpoint = "fluid" # "", "sm", "md", "lg" (default), "xl", "xxl", or "fluid"
 
   ## Button
   navBarButton = false # false (default) or true
@@ -45,8 +45,8 @@ images = ["cover.png"]
   bootstrapJavascript = false # false (default) or true
 
   # Nav
-  #sectionNav = ["docs"] # ["docs"] (default) or list of sections (e.g. ["docs", "guides"])
   sectionNav = ["docs", "docs-azurecp"] # ["docs"] (default) or list of sections (e.g. ["docs", "guides"])
+  mainSections = ["docs", "docs-azurecp"]
   toTopButton = false # false (default) or true
   breadcrumbTrail = false # false (default) or true
   headlineHash = true # true (default) or false
