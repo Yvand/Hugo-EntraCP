@@ -24,7 +24,6 @@ images = ["cover.png"]
   ## Button
   navBarButton = false # false (default) or true
   navBarButtonUrl = "/docs/prologue/introduction/"
-  navBarButtonText = "Get started"
 
   # FlexSearch
   flexSearch = true # true (default) or false
@@ -41,7 +40,6 @@ images = ["cover.png"]
   # Global alert
   alert = true # false (default) or true
   alertDismissable = true # true (default) or false
-  alertText = "my alert"
 
   # Bootstrap
   bootstrapJavascript = false # false (default) or true
@@ -67,7 +65,7 @@ images = ["cover.png"]
   backgroundDots = true # true (default) or false
 
   # Homepage
-  sectionFooter = true # false (default) or true
+  sectionFooter = false # false (default) or true
 
   # Blog
   relatedPosts = false # false (default) or true
