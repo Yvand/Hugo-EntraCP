@@ -58,7 +58,7 @@ images = ["cover.png"]
 
   # Versioning
   docsVersioning = false # false (default) or true
-  docsVersion = ""
+  docsVersion = "1.0"
 
   # UX
   headerBar = false # true (default) or false
@@ -69,6 +69,8 @@ images = ["cover.png"]
 
   # Blog
   relatedPosts = false # false (default) or true
+  imageList = true # true (default) or false
+  imageSingle = true # true (default) or false
 
   # KaTex
   katex = false
@@ -106,11 +108,11 @@ images = ["cover.png"]
 # Images (@hyas/images)
 [hyas_images]
   [hyas_images.landscape]
-    normalize = "1600x900" # "1600x900" (default)
+    normalize = "1360x765" # "1600x900" (default)
     lqip = "16x9" # "16x9" (default)
     widths = [480, 640, 800, 1024]
   [hyas_images.portrait]
-    normalize = "900x1600" # "900x1600" (default)
+    normalize = "765x1360" # "900x1600" (default)
     lqip = "9x16" # "9x16" (default)
     widths = [480, 640, 800, 1024]
 

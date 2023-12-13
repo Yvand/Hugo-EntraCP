@@ -17,10 +17,13 @@ defaultContentLanguage = "en"
 disableLanguages = ["de", "nl"]
 defaultContentLanguageInSubdir = false
 
-copyRight = "Copyright (c) 2023 Hyas"
+copyRight = "Copyright (c) 2023 Yvan Duhamel"
+
+[build.buildStats]
+  enable = true
 
 [social]
-  # twitter = "getdoks"
+  # twitter = "yvand"
 
 [outputs]
   home = ["HTML", "RSS", "searchIndex"]
@@ -58,8 +61,8 @@ rel  = "sitemap"
 
 [permalinks]
   blog = "/blog/:slug/"
-  #docs = "/docs/:sections[1:]/:slug/"
-  # docs = "/docs/se/:sections[1:]/:slug/"
+  docs = "/docs/:sections[1:]/:slug/"
+# docs = "/docs/1.0/:sections[1:]/:slug/"
 
 [minify.tdewolff.html]
   keepWhitespace = false
