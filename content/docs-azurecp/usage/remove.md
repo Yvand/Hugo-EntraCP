@@ -14,7 +14,7 @@ weight: 190
 toc: true
 ---
 
-xxalert icon="💡" text="Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors." />}}
+{{< callout context="caution" title="Important" icon="alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors. {{< /callout >}}
 
 ## Reset property ClaimProviderName in the SPTrustedIdentityTokenIssuer
 
