@@ -78,4 +78,4 @@ Once Fiddler was installed locally and its root certificate trusted (mandatory),
 </system.net>
 ```
 
-{{< alert icon="💡" text="To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left)." />}}
+{{< callout context="caution" title="Important" icon="alert-triangle" >}} To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left). {{< /callout >}}
