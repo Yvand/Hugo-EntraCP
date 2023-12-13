@@ -1,9 +1,9 @@
 ---
-title: "Grant permissions to your tenant"
+title: "Grant access to EntraCP on your tenant"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
-lastmod: 2021-10-03
+lastmod: 2021-12-13
 draft: false
 images: []
 menu:
@@ -18,19 +18,14 @@ Follow this article to create an app registration in your Microsoft Entra ID ten
 
 ## Permissions required
 
-EntraCP requires permissions `GroupMember.Read.All` and `User.Read.All`, of type application (not delegated):
+EntraCP requires permissions `GroupMember.Read.All` and `User.Read.All`, of type application (not delegated).
 
-![Image](images/aad-entracp-permissions.png "At the end of the configuration, the permissions should be exactly like this.")
+<!-- {{< img src="images/aad-entracp-permissions.png" alt="At the end of the configuration, the permissions should be exactly like this." >}} -->
 
 ## Create the app registration
 
-You can register the application using either:
-
-- The [Azure portal]({{< relref "#using-the-azure-portal" >}}).
-- [m3655 cli]({{< relref "#using-m365-cli" >}}).
-- [az cli]({{< relref "#using-az-cli" >}}).
-
-### Using the Azure portal
+{{< tabs "create-app-registration" >}}
+{{< tab "Entra ID portal" >}}
 
 1. Sign-in to your [Microsoft Entra ID tenant](https://entra.microsoft.com/).
 1. Under "Identity", expand "Applications" and click "App Registrations" > "New registration" > Type the following information:
@@ -43,7 +38,8 @@ You can register the application using either:
     * Click "Grant admin consent for TenantName" > Yes
 1. Click on "Certificates & secrets": EntraCP supports both a certificate and a secret, choose either option depending on your needs.
 
-### Using m365 cli
+{{< /tab >}}
+{{< tab "m365 cli" >}}
 
 [m365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes a single command to create the application, create a secret, set the permissions and grant the admin consent:
 
@@ -53,7 +49,8 @@ m365 login
 m365 aad app add --name "EntraCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All' --grantAdminConsent
 ```
 
-### Using az cli
+{{< /tab >}}
+{{< tab "bash" >}}
 
 This bash script creates the application, adds a secret, sets the permissions and grants the admin consent.  
 It can be used in Azure cloud shell or in a local shell:
@@ -119,3 +116,6 @@ az rest --method POST \
 echo "Application '$appName' was created successfully with client id '$appId' and client secret '$appSecret'. \
 App-only permissions '$userPermName' and '$groupPermName' were granted, and admin consent applied."
 ```
+
+{{< /tab >}}
+{{< /tabs >}}
