@@ -26,7 +26,7 @@ Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and d
 
 ## Set the required assembly bindings
 
-{{< alert icon="💡" text="The steps in this section must be completed on all the SharePoint servers, before the solution is actually added to SharePoint." />}}
+{{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps in this section must be completed on all the SharePoint servers, before the solution is actually added to SharePoint. {{< /callout >}}
 
 EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph/) and [Azure.Identity](https://www.nuget.org/packages/Azure.Identity), which both require assembly bindings to work with .NET Framework 4.8 ([more info](https://nickcraver.com/blog/2020/02/11/binding-redirects/)).  
 Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only file that can propagate the bindings to all is the `machine.config`.  

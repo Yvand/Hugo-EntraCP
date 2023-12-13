@@ -44,4 +44,4 @@ AzureCP is highly customizable to adapt to your requirements:
 
 It queries your Microsoft Entra ID tenant(s) to search and validate users and groups:
 
-![Image](assets/images/people-picker-EntraCP.png "")
+![Image](images/people-picker-EntraCP.png "")
