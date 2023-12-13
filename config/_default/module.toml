@@ -103,7 +103,3 @@
 [[mounts]]
   source = "static"
   target = "static"
-
-[[mounts]]
-  source = "themes/my-doks-theme/layouts"
-  target = "layouts"
