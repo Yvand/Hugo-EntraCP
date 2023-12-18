@@ -40,9 +40,8 @@ Perform the steps below on **all SharePoint servers**:
 
 ## Install EntraCP
 
-This page proposes 2 methods: [a fully automated installation]({{< relref "#automated-installation" >}}), or [a manual installation]({{< relref "#manual-installation" >}}).
-
-### Automated installation
+{{< tabs "install-entracp-type" >}}
+{{< tab "Automated install" >}}
 
 Run the following script on the server running the central administration, in a new PowerShell process:
 
@@ -106,9 +105,8 @@ if ($null -ne (Get-SPFeature| Where-Object{$_.SolutionId -eq $solution.SolutionI
 Write-Host "Finished."
 ```
 
-[Go to next step]({{< relref "#finalize-the-installation" >}}).
-
-### Manual installation
+{{< /tab >}}
+{{< tab "Manual install" >}}
 
 Do the following on the server running the central administration:
 
@@ -125,6 +123,9 @@ Do the following on the server running the central administration:
     ```powershell
     Install-SPFeature -SolutionId "dd03bdd7-0645-475e-a852-f180b8bc8191" -AllExistingFeatures
     ```
+
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Finalize the installation
 

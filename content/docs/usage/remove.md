@@ -33,36 +33,8 @@ $trust.Update()
 
 ## Uninstall EntraCP
 
-This page offers 2 methods: with [as little script as possible]({{< relref "#manual-uninstallation" >}}), or [with a script that does all the work]({{< relref "#automated-uninstallation" >}}).
-
-### Manual uninstallation
-
-This script does the minimum work required in PowerShell, before you can safely retract the solution from the central administration.  
-
-1. Run the following script on the server running the central administration:
-
-    ```powershell
-    # Disables the features present in EntraCP.wsp solution
-    Disable-SPFeature -Identity "Yvand.EntraCP" # This will remove the claims provider from the farm
-    Disable-SPFeature -Identity "Yvand.EntraCP.Administration" -Url $([Microsoft.SharePoint.Administration.SPAdministrationWebApplication]::Local.Url)
-
-    # Uninstalls the features present in EntraCP.wsp solution
-    Uninstall-SPFeature -Identity "Yvand.EntraCP"
-    Uninstall-SPFeature -Identity "Yvand.EntraCP.Administration"
-
-    # Sanity check
-    if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "EntraCP*"}) -and
-        $null -eq (Get-SPClaimProvider -Identity "EntraCP" -ErrorAction SilentlyContinue)) {
-        Write-Host "You can now safely retract EntraCP.wsp"
-    } else {
-        Write-Warning "You should not retract EntraCP.wsp until all its features and its claims provider are properly removed. You won't be able to do it after you retracted the solution, unless you redeploy the solution"
-    }
-    ```
-
-1. Browse to the central administration > System Settings > Manage farm solutions > EntraCP.wsp > Retract Solution
-1. Once the solution is retracted, click again on EntraCP.wsp > Remove Solution
-
-### Automated uninstallation
+{{< tabs "uninstall-entracp-type" >}}
+{{< tab "Automated uninstall" >}}
 
 Run the following script on the server running the central administration, to completely uninstall EntraCP from the SharePoint farm:
 
@@ -111,6 +83,37 @@ if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "$featureNamePrefix.$produ
     }
 }
 ```
+
+{{< /tab >}}
+{{< tab "Manual uninstall" >}}
+
+This script does the minimum work required in PowerShell, before you can safely retract the solution from the central administration.  
+
+1. Run the following script on the server running the central administration:
+
+    ```powershell
+    # Disables the features present in EntraCP.wsp solution
+    Disable-SPFeature -Identity "Yvand.EntraCP" # This will remove the claims provider from the farm
+    Disable-SPFeature -Identity "Yvand.EntraCP.Administration" -Url $([Microsoft.SharePoint.Administration.SPAdministrationWebApplication]::Local.Url)
+
+    # Uninstalls the features present in EntraCP.wsp solution
+    Uninstall-SPFeature -Identity "Yvand.EntraCP"
+    Uninstall-SPFeature -Identity "Yvand.EntraCP.Administration"
+
+    # Sanity check
+    if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "EntraCP*"}) -and
+        $null -eq (Get-SPClaimProvider -Identity "EntraCP" -ErrorAction SilentlyContinue)) {
+        Write-Host "You can now safely retract EntraCP.wsp"
+    } else {
+        Write-Warning "You should not retract EntraCP.wsp until all its features and its claims provider are properly removed. You won't be able to do it after you retracted the solution, unless you redeploy the solution"
+    }
+    ```
+
+1. Browse to the central administration > System Settings > Manage farm solutions > EntraCP.wsp > Retract Solution
+1. Once the solution is retracted, click again on EntraCP.wsp > Remove Solution
+
+{{< /tab >}}
+{{< /tabs >}}
 
 ## Remove the assembly bindings
 
