@@ -27,6 +27,7 @@ The tenant can be added from the EntraCP global configuration page in the centra
 ```powershell
 Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
 $config = [Yvand.EntraClaimsProvider.EntraCP]::GetConfiguration()
+$settings = $config.Settings
 
 # Add a tenant using a client secret
 $tenant = New-Object "Yvand.EntraClaimsProvider.Configuration.EntraIDTenant"
