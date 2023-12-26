@@ -45,7 +45,7 @@ Perform the steps below on **all SharePoint servers**:
 
 Run the following script on the server running the central administration, in a new PowerShell process:
 
-```powershell
+```powershell {title="Automated installation script for EntraCP" lineNos=true}
 <#
 .SYNOPSIS
     Deploys the SharePoint solution EntraCP.wsp, created with the deployment mode "Application"
