@@ -3,7 +3,7 @@ title: "Configure the credentials"
 description: ""
 lead: ""
 date: 2023-11-30
-lastmod: 2023-11-30
+lastmod: 2023-12-27
 draft: false
 images: []
 menu:
@@ -51,8 +51,8 @@ $config.Update($true)
 
 ## Update the credentials of a tenant
 
-The EntraCP administration pages do not have a direct option to update the credentials, but it can be done by deleteding and re-adding the tenant with the new credentials.  
-Alternatively, 
+The EntraCP administration pages do not have a direct way to update the credentials, but it can be done by deleteding and re-adding the tenant with the new credentials.  
+However, this can be achieved using PowerShell:
 
 ### Set a new client secret
 

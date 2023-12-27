@@ -2,7 +2,7 @@
 title: "Announcing EntraCP"
 summary: "AzureCP becomes EntraCP, a new claims provider rebuilt from the ground up, with significant improvements."
 date: 2023-09-22
-lastmod: 2023-09-22
+lastmod: 2023-12-27
 draft: false
 weight: 50
 images: []
@@ -28,7 +28,7 @@ homepage: true
 * The minimum SharePoint version required is 2016
 * The minimum .NET Framework required is 4.8
 * It no longer works on SharePoint 2013
- 
+
 ## Why those changes
 
 Simply put, the weight of legacy: AzureCP had too many early design mistakes, that I could not fix without making breaking changes that created significant risks when updating it. So, I always privileged the most secure approach.

@@ -3,7 +3,7 @@ title: "Configure the proxy"
 description: ""
 lead: ""
 date: 2023-09-14
-lastmod: 2023-11-30
+lastmod: 2023-12-27
 draft: false
 images: []
 menu:
@@ -73,4 +73,7 @@ The PowerShell script below sets the WinINET proxy config machine wide (instead 
       Set-ItemProperty -Path $registryPath -Name ProxyOverride -Value $bypasslist
       Set-ItemProperty -Path "$registryPath\Connections" -Name DefaultConnectionSettings -Value $defaultConnectionSettings
   }
+
+  # Run Bitsadmin to set the proxy for localsystem
+  Bitsadmin /util /setieproxy localsystem MANUAL_PROXY $proxy $bypasslist
   ```

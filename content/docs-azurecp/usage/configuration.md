@@ -3,7 +3,7 @@ title: "Configure"
 description: ""
 lead: "Configure AzureCP to fit your needs"
 date: 2021-05-17T14:06:29Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2023-12-27
 draft: false
 images: []
 menu:
@@ -95,11 +95,11 @@ If SharePoint servers connect to internet through a proxy, [additional configura
 
 This configuration must be set on the following processes, on all SharePoint servers of the farm:
 
-* SharePoint sites that use AzureCP
-* SharePoine central administration site
-* SharePoint STS located in 16\WebServices\SecurityToken
-* SharePoint Web Services root site
-* SharePoint Timer service (if necessary, create file owstimer.exe.config in 16\BIN)
+- SharePoint sites that use AzureCP
+- SharePoine central administration site
+- SharePoint STS located in 16\WebServices\SecurityToken
+- SharePoint Web Services root site
+- SharePoint Timer service (if necessary, create file owstimer.exe.config in 16\BIN)
 
 ### Configure the proxy for Windows processes
 

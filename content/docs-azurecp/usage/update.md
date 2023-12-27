@@ -3,7 +3,7 @@ title: "Update"
 description: "Update AzureCP"
 lead: "Update AzureCP in your SharePoint farm"
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2023-12-27
 draft: false
 images: []
 menu:
@@ -27,7 +27,8 @@ On the server running the central administration:
   Update-SPSolution -GACDeployment -Identity "AzureCP.wsp" -LiteralPath "F:\Data\Dev\AzureCP.wsp"
   ```
 
-2. Visit central administration > System Settings > Manage farm solutions: Wait until solution status shows "Deployed".
+1. Visit central administration > System Settings > Manage farm solutions: Wait until solution status shows "Deployed".
+
   {{< callout context="caution" title="Important" icon="alert-triangle" >}} Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2. {{< /callout >}}
   > If status shows "Error", restart the SharePoint timer service on servers where depployment failed, start a new PowerShell process and run Update-SPSolution again.
 
