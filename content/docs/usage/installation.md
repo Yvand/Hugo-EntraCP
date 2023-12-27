@@ -16,23 +16,25 @@ toc: true
 
 Follow this article to install EntraCP in your SharePoint farm.
 
+{{< details "About the installation" >}}
 Installing EntraCP is much easier and safer than AzureCP by design because it uses the deployment type `ApplicationServer`, which has 2 very cool benefits:
 
 - Its features are installed with a specific, additional step, preventing conflicts.
 - Its assemblies are deployed on truly all SharePoint servers.
+{{< /details >}}
 
 ## Download the required assets
 
 Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
 
-## Set the required assembly bindings
+## Set the assembly bindings
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps in this section must be completed on all the SharePoint servers, before the solution is actually added to SharePoint. {{< /callout >}}
-
+{{< details "Why this is needed" >}}
 EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph/) and [Azure.Identity](https://www.nuget.org/packages/Azure.Identity), which both require assembly bindings to work with .NET Framework 4.8 ([more info](https://nickcraver.com/blog/2020/02/11/binding-redirects/)).  
-Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only file that can propagate the bindings to all is the `machine.config`.  
+Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only file that can propagate the bindings to all is the `machine.config`.
+{{< /details >}}
 
-Perform the steps below on **all SharePoint servers**:
+{{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps below must be completed on all the SharePoint servers, before the solution is deployed. {{< /callout >}}
 
 1. Open the `machine.config` file (`%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config`) in a text editor.
 1. Locate the node `<runtime />`.
