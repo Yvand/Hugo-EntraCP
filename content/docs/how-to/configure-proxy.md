@@ -31,6 +31,8 @@ $config.ApplySettings($settings, $true)
 
 ## Configure the proxy for certificate validation
 
+{{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps below need to be applied in all the SharePoint servers of the farm. {{< /callout >}}
+
 EntraCP connects to Microsoft Graph using HTTPS, and Windows will try to validate the certificates using the links in their CRL.  
 If Windows cannot connect to those links, the typical behavior is random timeouts during a few minutes while using the people picker / EntraCP.  
 Apply the steps below on each SharePoint server to fully configure the proxy:
