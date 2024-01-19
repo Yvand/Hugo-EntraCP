@@ -354,7 +354,6 @@
       "set-a-new-client-certificate",
       "set-a-new-client-secret",
       "set-the-assembly-bindings",
-      "set-the-required-assembly-bindings",
       "should-i-migrate-from-azurecp-to-entracp",
       "should-i-update",
       "sidebar-default",
