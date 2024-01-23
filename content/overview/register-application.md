@@ -1,5 +1,5 @@
 ---
-title: "Grant access to EntraCP on your tenant"
+title: "Grant EntraCP access to your tenant"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
