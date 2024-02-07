@@ -77,5 +77,9 @@ The PowerShell script below sets the WinINET proxy config machine wide (instead 
   }
 
   # Run Bitsadmin to set the proxy for localsystem
-  Bitsadmin /util /setieproxy localsystem MANUAL_PROXY $proxy $bypasslist
+  if ($proxyEnabled -eq 1) {
+      Bitsadmin /util /setieproxy localsystem MANUAL_PROXY $proxy $bypasslist
+  } else {
+      Bitsadmin /util /setieproxy localsystem NO_PROXY
+  }
   ```
