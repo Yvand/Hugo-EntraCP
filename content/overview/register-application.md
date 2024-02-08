@@ -21,8 +21,6 @@ Follow this article to create an app registration in your Microsoft Entra ID ten
 EntraCP connects to your tenant to search for users, groups, and to get the group membership of the users.  
 For that, it needs the permissions `GroupMember.Read.All` and `User.Read.All`, of type application (not delegated).
 
-<!-- {{< img src="images/aad-entracp-permissions.png" alt="At the end of the configuration, the permissions should be exactly like this." >}} -->
-
 ## Create the app registration
 
 {{< tabs "create-app-registration" >}}
