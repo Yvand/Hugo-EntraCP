@@ -1,7 +1,7 @@
 ---
 title: "Update"
-description: "Update EntraCP"
-lead: "Update EntraCP in your SharePoint farm"
+description: "This article describes the steps required to update EntraCP in your SharePoint farm."
+lead: ""
 date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
@@ -14,7 +14,11 @@ weight: 120
 toc: true
 ---
 
-Follow this article to update EntraCP in your SharePoint farm.
+This article describes the steps required to update EntraCP in your SharePoint farm.
+
+## Download the required assets
+
+Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
 
 ## Update the assembly bindings
 

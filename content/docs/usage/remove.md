@@ -1,7 +1,7 @@
 ---
 title: "Remove"
-description: "Remove EntraCP"
-lead: "Update EntraCP in your SharePoint farm"
+description: "This article describes the steps required to remove EntraCP from your SharePoint farm."
+lead: ""
 date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
@@ -14,7 +14,7 @@ weight: 130
 toc: true
 ---
 
-Follow this article to properly, safely uninstall EntraCP from your SharePoint farm.  
+This article describes the steps required to remove EntraCP from your SharePoint farm.
 
 {{< callout context="caution" title="Important" icon="alert-triangle" >}} Do not merely retract the solution! The features must be manually deactivated and uninstalled before the solution is retracted. {{< /callout >}}
 {{< callout context="caution" title="Important" icon="alert-triangle" >}} Do all the operations below on the server running the central administration, and in a new PowerShell process. {{< /callout >}}
@@ -101,7 +101,7 @@ This script does the minimum work required in PowerShell, before you can safely 
     Uninstall-SPFeature -Identity "Yvand.EntraCP.Administration"
 
     # Sanity check
-    if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "EntraCP*"}) -and
+    if ($null -eq (Get-SPFeature | ?{$_.DisplayName -like "Yvand.EntraCP*"}) -and
         $null -eq (Get-SPClaimProvider -Identity "EntraCP" -ErrorAction SilentlyContinue)) {
         Write-Host "You can now safely retract EntraCP.wsp"
     } else {

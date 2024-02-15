@@ -1,9 +1,9 @@
 ---
 title: "Installation"
-description: "Follow this article to install EntraCP in your SharePoint farm."
-lead: "Follow this article to install EntraCP in your SharePoint farm."
+description: "This article describes the steps required to install EntraCP in your SharePoint farm."
+lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2023-12-27
+lastmod: 2024-02-15
 draft: false
 images: []
 menu:
@@ -14,10 +14,10 @@ weight: 100
 toc: true
 ---
 
-Follow this article to install EntraCP in your SharePoint farm.
+This article describes the steps required to install EntraCP in your SharePoint farm.
 
 {{< details "About the installation" >}}
-Installing EntraCP is much easier and safer than AzureCP by design because it uses the deployment type `ApplicationServer`, which has 2 very cool benefits:
+Installing EntraCP is much easier and safer than AzureCP because it uses the deployment type `ApplicationServer`, which implies that:
 
 - Its features are installed with a specific, additional step, preventing conflicts.
 - Its assemblies are deployed on truly all SharePoint servers.
