@@ -7,15 +7,12 @@ latestAssetVersion = "v24.0"
 projectUrl = "https://github.com/Yvand/EntraCP/"
 
 # Hugo
-title = "My Docs"
-description = "Congrats on setting up a new Doks project!"
+title = "EntraCP for SharePoint Server"
+description = "EntraCP (formerly AzureCP) is a claims provider that connects SharePoint to your Microsoft Entra ID tenant, in federated authentication."
 images = ["cover.png"]
 
 # mainSections
 mainSections = ["docs", "docs-azurecp"]
-
-[social]
-  #twitter = "yvand"
 
 # Doks (@hyas/doks-core)
 [doks]
