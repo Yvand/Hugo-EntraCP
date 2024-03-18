@@ -21,16 +21,6 @@
   url = "/docs-azurecp/overview/"
   parent = "documentation"
 
-# [[main]]
-#   name = "Documentation for EntraCP"
-#   url = "/docs/se/overview/"
-#   weight = 20
-
-# [[main]]
-#   name = "Documentation for AzureCP"
-#   url = "/docs/se/overview/"
-#   weight = 30
-
 [[main]]
   name = "Blog"
   url = "/blog/"
@@ -59,7 +49,6 @@
   identifier = "usage"
   url = "/docs/usage/"
 
-
 [[docs]]
   name = "How-to Guides"
   weight = 20
@@ -76,11 +65,11 @@
 [[docs-azurecp]]
   name = "Usage"
   weight = 10
-  identifier = "usage"
+  identifier = "azurecp-usage"
   url = "/docs-azurecp/usage/"
 
 [[docs-azurecp]]
   name = "Help"
   weight = 20
-  identifier = "help"
+  identifier = "azurecp-help"
   url = "/docs-azurecp/help/"

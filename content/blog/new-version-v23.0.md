@@ -9,8 +9,8 @@ images: []
 categories: []
 tags: []
 contributors: []
-pinned: true
-homepage: true
+pinned: false
+homepage: false
 ---
 
 ## Overview
