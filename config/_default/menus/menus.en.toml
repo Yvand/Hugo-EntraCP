@@ -54,34 +54,3 @@
   name = "Privacy Policy"
   url = "/privacy-policy/"
   weight = 10
-
-[[docs]]
-  name = "Usage"
-  weight = 10
-  identifier = "usage"
-  url = "/docs/usage/"
-
-[[docs]]
-  name = "How-to Guides"
-  weight = 20
-  identifier = "how-to"
-  url = "/docs/how-to/"
-
-[[docs]]
-  name = "Help"
-  weight = 30
-  identifier = "help"
-  url = "/docs/help/"
-
-
-[[docs-azurecp]]
-  name = "Usage"
-  weight = 10
-  identifier = "azurecp-usage"
-  url = "/docs-azurecp/usage/"
-
-[[docs-azurecp]]
-  name = "Help"
-  weight = 20
-  identifier = "azurecp-help"
-  url = "/docs-azurecp/help/"
