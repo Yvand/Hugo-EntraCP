@@ -121,7 +121,7 @@ Do the following on the server running the central administration:
     Add-SPSolution -LiteralPath "C:\YvanData\dev\EntraCP.wsp"
     ```
 
-1. Navigate to the central administration > Security > Manage farm solutions > click on "entracp.wsp" > Deploy solution.
+1. Navigate to the central administration > System Settings > Manage farm solutions > click on "entracp.wsp" > Deploy solution.
 1. Monitor the deployment of the solution and wait for it to be fully deployed.
 1. Install the features present in the solution:
 
