@@ -38,9 +38,9 @@ Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe,
 
 {{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps below must be completed on all the SharePoint servers, before the solution is deployed. {{< /callout >}}
 
-1. Open the `machine.config` file (`%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config`) in a text editor.
-1. Locate the node `<runtime />`.
-1. Replace it with the entire node `<runtime>` in the file `assembly-bindings.config` you downloaded.
+1. Open the file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config` in a text editor.
+1. Locate the node `runtime` (`<runtime />` or `<runtime>`).
+1. Replace it with the one in the file `assembly-bindings.config`, available in the assets of the each release.
 1. Save the file.
 
 ## Install EntraCP
