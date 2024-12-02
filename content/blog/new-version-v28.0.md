@@ -1,7 +1,7 @@
 ---
-title: "New release v27.0"
-summary: "New release v27.0.20240820.36 is available for download."
-date: 2024-08-21
+title: "New release v28.0"
+summary: "New release v28.0.20241202.37 is available for download."
+date: 2024-12-02
 draft: false
 weight: 50
 images: []
