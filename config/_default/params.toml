@@ -2,10 +2,10 @@
 projectName = "EntraCP"
 mainAssetName = "EntraCP.wsp"
 latestReleaseUrl = "https://github.com/Yvand/EntraCP/releases/latest"
-latestAssetUrl = "https://github.com/Yvand/EntraCP/releases/download/v28.0.20241202.37/EntraCP.wsp"
-latestAssetVersion = "v28.0"
+latestAssetUrl = "https://github.com/Yvand/EntraCP/releases/download/v29.0.20250721.38/EntraCP.wsp"
+latestAssetVersion = "v29.0"
 projectUrl = "https://github.com/Yvand/EntraCP/"
-LinkTolatestVersionReleaseNotes = "/blog/new-release-v28.0/"
+LinkTolatestVersionReleaseNotes = "/blog/new-release-v29.0/"
 
 # Hugo
 title = "EntraCP for SharePoint Server"
