@@ -6,11 +6,7 @@ date: 2021-05-20T10:45:52Z
 lastmod: 2024-02-15
 draft: false
 images: []
-menu:
-  docs:
-    parent: "usage"
-    identifier: "installation"
-weight: 100
+weight: 110
 toc: true
 ---
 
@@ -21,7 +17,7 @@ Installing EntraCP is much easier and safer than AzureCP because it uses the dep
 
 - Its features are installed with a specific, additional step, preventing conflicts.
 - Its assemblies are deployed on truly all SharePoint servers.
-{{< /details >}}
+  {{< /details >}}
 
 ## Download the required assets
 
@@ -36,7 +32,7 @@ EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Mic
 Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only config file that can propagate the bindings to all is the `machine.config`.
 {{< /details >}}
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} The steps below must be completed on all the SharePoint servers, before the solution is deployed. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below must be completed on all the SharePoint servers, before the solution is deployed. {{< /callout >}}
 
 1. Open the file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config` in a text editor.
 1. Locate the node `runtime` (`<runtime />` or `<runtime>`).
@@ -117,17 +113,17 @@ Do the following on the server running the central administration:
 
 1. Add the solution to the farm:
 
-    ```powershell
-    Add-SPSolution -LiteralPath "C:\YvanData\dev\EntraCP.wsp"
-    ```
+   ```powershell
+   Add-SPSolution -LiteralPath "C:\YvanData\dev\EntraCP.wsp"
+   ```
 
 1. Navigate to the central administration > System Settings > Manage farm solutions > click on "entracp.wsp" > Deploy solution.
 1. Monitor the deployment of the solution and wait for it to be fully deployed.
 1. Install the features present in the solution:
 
-    ```powershell
-    Install-SPFeature -SolutionId "dd03bdd7-0645-475e-a852-f180b8bc8191" -AllExistingFeatures
-    ```
+   ```powershell
+   Install-SPFeature -SolutionId "dd03bdd7-0645-475e-a852-f180b8bc8191" -AllExistingFeatures
+   ```
 
 {{< /tab >}}
 {{< /tabs >}}

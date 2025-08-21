@@ -3,7 +3,7 @@ title: "Installation"
 description: "Install AzureCP"
 lead: "Install AzureCP in your SharePoint farm"
 date: 2021-05-20T10:45:52Z
-lastmod: 2023-12-27
+lastmod: 2025-08-21
 draft: false
 images: []
 menu:
@@ -14,6 +14,10 @@ weight: 100
 toc: true
 ---
 
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
+
 ## Important
 
 SharePoint (especially 2019) has unaddressed reliability issues when deploying farm solutions on farms with multiple servers.  
@@ -22,13 +26,13 @@ This page will guide you through the steps to install AzureCP in a safe and reli
 
 ## Deploy the solution
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors. {{< /callout >}}
 
 Execute the following steps:
 
 - Download [the latest version](https://github.com/Yvand/EntraCP/releases/latest) of AzureCP.wsp.
-- Install and deploy the solution, using either the __simple__ or the __safe__ method:
-  - __Simple__ method: Recommended for single-server farms only:
+- Install and deploy the solution, using either the **simple** or the **safe** method:
+  - **Simple** method: Recommended for single-server farms only:
 
   ```powershell
   # Run this script on the server running central administration, in a new PowerShell process
@@ -37,10 +41,10 @@ Execute the following steps:
   # Then run Install-SPSolution (without -Local) to deploy solution globally (on all servers that run service "Microsoft SharePoint Foundation Web Application"):
   Install-SPSolution -Identity "AzureCP.wsp" -GACDeployment
   ```
-  
-  - __Safe__ method: Recommended for production environments with multiple servers:
 
-  {{< callout context="caution" title="Important" icon="alert-triangle" >}} Run this script on ALL SharePoint servers running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, sequentially (not in parallel), starting with the server running the central administration. {{< /callout >}}
+  - **Safe** method: Recommended for production environments with multiple servers:
+
+  {{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Run this script on ALL SharePoint servers running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, sequentially (not in parallel), starting with the server running the central administration. {{< /callout >}}
 
   ```powershell
   <#
@@ -102,12 +106,12 @@ Execute the following steps:
 
 - Visit central administration > System Settings > Manage farm solutions: Confirm the solution is "Globally deployed".
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} If you did not run `Install-SPSolution -Local` on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} If you did not run `Install-SPSolution -Local` on every SharePoint server running the service \"Microsoft SharePoint Foundation Web Application\" and/or the central administration, the solution will NOT be \"Globally deployed\" and SharePoint will NOT activate AzureCP features. {{< /callout >}}
 
 ## Finalize the installation
 
-This step is __very important__ and applies to __all__ SharePoint servers which do __NOT run the service "Microsoft SharePoint Foundation Web Application" and/or the central administration__.  
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} This step must be executed during both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios. {{< /callout >}}
+This step is **very important** and applies to **all** SharePoint servers which do **NOT run the service "Microsoft SharePoint Foundation Web Application" and/or the central administration**.  
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} This step must be executed during both install (`Install-SPSolution`) and update (`Update-SPSolution`) scenarios. {{< /callout >}}
 For each of those servers, complete the steps below to manually add/update AzureCP bits (azurecp.dll and its dependent assemblies) in the GAC:
 
 - Download the package ['AzureCP-XXXX-dependencies.zip'](https://github.com/Yvand/EntraCP/releases) corresponding to the version you downloaded (expand the "Assets" to find it).
@@ -147,7 +151,7 @@ For each of those servers, complete the steps below to manually add/update Azure
               Write-Host "Assembly $assemblyFullName sucessfully re-added to the GAC" -ForegroundColor Green
           }
       }
-      catch [System.IO.FileNotFoundException] 
+      catch [System.IO.FileNotFoundException]
       {
           # Assembly.Load throws a FileNotFoundException if assembly is not found in the GAC: https://docs.microsoft.com/en-us/dotnet/api/system.io.filenotfoundexception?view=netframework-4.8
           Write-Host "Adding assembly $assemblyFullName to the GAC"
@@ -158,7 +162,7 @@ For each of those servers, complete the steps below to manually add/update Azure
   ```
 
 - Restart the IIS service and the SharePoint timer service (SPTimerV4):  
-`Restart-Service W3SVC; Restart-Service SPTimerV4`
+  `Restart-Service W3SVC; Restart-Service SPTimerV4`
 
 ## Enable the claims provider
 

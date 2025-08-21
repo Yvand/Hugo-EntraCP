@@ -6,11 +6,6 @@ date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
-menu:
-  docs:
-    parent: "help"
-    identifier: "troubleshooting"
-weight: 300
 toc: true
 ---
 
@@ -78,4 +73,4 @@ Once Fiddler was installed locally and its root certificate trusted (mandatory),
 </system.net>
 ```
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left). {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left). {{< /callout >}}

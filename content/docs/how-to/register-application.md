@@ -1,16 +1,11 @@
 ---
-title: "Grant EntraCP access to your tenant"
+title: "Grant access to your tenant"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
 lastmod: 2021-12-13
 draft: false
 images: []
-menu:
-  overview:
-    parent: ""
-    identifier: "register-app"
-weight: 110
 toc: true
 ---
 
@@ -28,13 +23,13 @@ To achieve this, it needs an app registration in your tenant with the applicatio
 
 1. Sign-in to your [Microsoft Entra ID tenant](https://entra.microsoft.com/).
 1. Under "Identity", expand "Applications" and click "App Registrations" > "New registration" > Type the following information:
-    * Name: EntraCP
-    * Supported account types: "Accounts in this organizational directory only (Single tenant)"
+   - Name: EntraCP
+   - Supported account types: "Accounts in this organizational directory only (Single tenant)"
 1. Click "Register"
 1. Click "API permissions"
-    * Remove the default permission.
-    * Click "Add a permission" > Select `Microsoft Graph` > "Application permissions", and select `GroupMember.Read.All` and `User.Read.All`.
-    * Click "Grant admin consent for TenantName" > Yes
+   - Remove the default permission.
+   - Click "Add a permission" > Select `Microsoft Graph` > "Application permissions", and select `GroupMember.Read.All` and `User.Read.All`.
+   - Click "Grant admin consent for TenantName" > Yes
 1. Click on "Certificates & secrets": EntraCP supports both a certificate and a secret, choose either option depending on your needs.
 
 {{< /tab >}}

@@ -18,7 +18,7 @@ homepage: false
 Link to this releasae: [Click here](https://github.com/Yvand/EntraCP/releases/tag/v23.0.20231121.30).  
 Changelog in this version: [Click here](https://github.com/Yvand/EntraCP/blob/master/CHANGELOG.md#entracp-v2302023112130-enhancements--bug-fixes---published-in-november-21-2023).  
 To update from a previous version of EntraCP: [Follow this article]({{< relref "/docs/usage/update" >}}).  
-To update from AzureCP: [See this article]({{< relref "/overview/introduction" >}}).
+To upgrade from AzureCP: [See this article]({{< relref "/docs-azurecp/guides/upgrade-to-entracp" >}}).
 
 ## Should I update?
 

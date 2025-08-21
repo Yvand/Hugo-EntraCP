@@ -3,16 +3,16 @@ title: "Configure"
 description: ""
 lead: "Configure AzureCP to fit your needs"
 date: 2021-05-17T14:06:29Z
-lastmod: 2023-12-27
+lastmod: 2025-08-21
 draft: false
 images: []
-menu:
-  docs-azurecp:
-    parent: "usage"
-    identifier: "configure"
 weight: 120
 toc: true
 ---
+
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
 
 ## Prerequisites
 

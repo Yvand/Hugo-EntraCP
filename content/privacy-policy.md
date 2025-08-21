@@ -9,7 +9,7 @@ images: []
 type: "legal"
 ---
 
-__TLDR__: Neither this site nor this project collects any personal data.
+**TLDR**: Neither this site nor this project collects any personal data.
 
 ## Project privacy policy
 

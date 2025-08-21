@@ -1,20 +1,18 @@
 ---
-title: "Overview"
+title: "Introduction"
 description: ""
 lead: ""
 date: 2023-09-18
 lastmod: 2023-09-18
 draft: false
 images: []
-menu: 
-  docs-azurecp:
-    parent: ""
 weight: 10
 toc: true
 ---
 
-This is the documentation for AzureCP.  
-It is deprecated and no longer maintained. You should [upgrade to EntraCP]({{< relref "/overview/introduction#should-i-upgrade-to-azurecp-subscription-edition" >}}), unless you run on SharePoint 2013.
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
 
 ## Prerequisites
 
@@ -44,4 +42,4 @@ AzureCP is highly customizable to adapt to your requirements:
 
 It queries your Microsoft Entra ID tenant(s) to search and validate users and groups:
 
-![Image](images/people-picker-EntraCP.png "")
+![Image](images/people-picker-EntraCP.png)

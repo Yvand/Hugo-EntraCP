@@ -1,16 +1,11 @@
 ---
-title: "Configure the credentials"
+title: "Set credentials"
 description: ""
 lead: ""
 date: 2023-11-30
 lastmod: 2023-12-27
 draft: false
 images: []
-menu:
-  docs:
-    parent: "how-to"
-    identifier: "configure-credentials"
-weight: 200
 toc: true
 ---
 

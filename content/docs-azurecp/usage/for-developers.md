@@ -3,7 +3,7 @@ title: "For developers"
 description: "Possibilities of customization for developers"
 lead: "Possibilities of customization for developers"
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2025-08-21
 draft: false
 images: []
 menu:
@@ -13,6 +13,10 @@ menu:
 weight: 150
 toc: true
 ---
+
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
 
 ## When AzureCP may need to be customized
 
@@ -34,4 +38,4 @@ For that, the class AzureCP can be inherited to create a class that will be a ne
 - Both AzureCP.wsp and the custom version need azurecp.dll and all its dependent assemblies. Be aware that updating / removing one package will affect these assemblies (also used by the other package).
 - To avoid deployment issues, always deactivate the farm feature (which manages the claims provider) before retracting the solution.
 
-If something goes wrong during solution deployment, [check this page]({{< relref "../help/fix-setup-issues" >}}) to resolve problems.  
+If something goes wrong during solution deployment, [check this page]({{< relref "../help/fix-setup-issues" >}}) to resolve problems.

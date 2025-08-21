@@ -6,11 +6,7 @@ date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
-menu:
-  docs:
-    parent: "usage"
-    identifier: "configuration"
-weight: 110
+weight: 115
 toc: true
 ---
 
