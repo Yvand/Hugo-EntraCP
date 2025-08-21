@@ -17,7 +17,7 @@ It is useful in federated authentication (either with [WS-Federation](https://do
 
 - SharePoint Subscription Edition, SharePoint 2019 or SharePoint 2016.
 - [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) or newer on all SharePoint servers.
-- **All** SharePoint servers need to be able to connect to Internet.
+- **All** the harePoint servers must be able to connect to Entra ID and Microsoft Graph.
 - An [app registration in your Microsoft Entra ID tenant]({{< relref "register-application" >}}), with the appropriate permissions.
 
 ## Features
@@ -43,6 +43,6 @@ EntraCP is highly customizable to adapt to your requirements:
 
 EntraCP cannot be used if:
 
-- SharePoint servers have no network access to Azure Active Directory.
+- SharePoint servers have no network access to Entra ID and Microsoft Graph.
 - Cmdlet `New-SPTrustedIdentityTokenIssuer` was run with the switch `-UseDefaultConfiguration`.
 - It is already associated with a trust, and you want to associate it with a new trust.

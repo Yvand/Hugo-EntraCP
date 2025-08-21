@@ -3,7 +3,7 @@ title: "Installation"
 description: "This article describes the steps required to install EntraCP in your SharePoint farm."
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2024-02-15
+lastmod: 2025-08-21
 draft: false
 images: []
 weight: 110
@@ -135,6 +135,12 @@ On each SharePoint server, restart the IIS and the SharePoint timer services:
 ```powershell
 Restart-Service -Name @("W3SVC", "SPTimerV4")
 ```
+
+## Validate the installation
+
+EntraCP includes special page **TroubleshootEntraCP.aspx**, that can be used to validate the install (or update) was performed correctly, and the [prerequisites]({{< relref "../overview/introduction#prerequisites" >}}) are met.  
+This page is standalone: It does NOT use your EntraCP configuration.  
+It can be found in the central administration > Security.
 
 ## Enable the claims provider
 

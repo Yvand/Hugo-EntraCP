@@ -1,15 +1,16 @@
 ---
-title: "Grant access to your tenant"
+title: "Register your application"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
-lastmod: 2021-12-13
+lastmod: 2025-08-21
 draft: false
 images: []
 toc: true
 ---
 
-Follow this article to create an app registration in your Microsoft Entra ID tenant, and grant the permissions that EntraCP needs.
+You need to create an app registration in your Microsoft Entra ID tenant, to allow EntraCP to connect.  
+This article will guide you through the steps to create it.
 
 ## Permissions required
 
@@ -32,8 +33,8 @@ To achieve this, it needs an app registration in your tenant with the applicatio
    - Click "Grant admin consent for TenantName" > Yes
 1. Click on "Certificates & secrets": EntraCP supports both a certificate and a secret, choose either option depending on your needs.
 
-{{< /tab >}}
-{{< tab "m365 cli" >}}
+        {{< /tab >}}
+        {{< tab "m365 cli" >}}
 
 [m365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes a single command to create the application, create a secret, set the permissions and grant the admin consent:
 

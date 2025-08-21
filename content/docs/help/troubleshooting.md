@@ -3,7 +3,7 @@ title: "Troubleshooting"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2025-08-21
 draft: false
 images: []
 toc: true
@@ -32,10 +32,10 @@ EntraCP comes with a built-in troubleshooting page, located in `16\TEMPLATE\ADMI
 It is primarily designed to:
 
 - Validate that the assembly bindings were correctly set in the `machine.config` file.
-- Test the connection to your Microsoft Entra ID tenant, without using the EntraCP configuration.
+- Test the connectivity to Microsoft Entra ID and Graph.
 
-It is written entirely with inline code, which means that you can easily modify as you need.  
-For security reasons, by default it can be called only from the central administration site, but it you can copy the page anywhere under `16\TEMPLATE\LAYOUTS`, and you'll be able to call it from any SharePoint site.
+It is written in inline code, so you can edit it in a simple notepad.  
+For security reasons, by default it can be called only from the central administration, but you can copy it anywhere under `16\TEMPLATE\LAYOUTS`, to call it from a regular SharePoint site.
 
 ## Test the connectivity with Microsoft Graph
 
