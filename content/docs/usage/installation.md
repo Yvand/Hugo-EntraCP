@@ -39,7 +39,7 @@ Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe,
 1. Replace it with the one in the file `assembly-bindings.config`, available in the assets of the each release.
 1. Save the file.
 
-## Install EntraCP
+## Deploy the solution
 
 {{< tabs "install-entracp-type" >}}
 {{< tab "Automated install" >}}
@@ -128,7 +128,7 @@ Do the following on the server running the central administration:
 {{< /tab >}}
 {{< /tabs >}}
 
-## Finalize the installation
+## Restart the services
 
 On each SharePoint server, restart the IIS and the SharePoint timer services:
 
@@ -136,11 +136,12 @@ On each SharePoint server, restart the IIS and the SharePoint timer services:
 Restart-Service -Name @("W3SVC", "SPTimerV4")
 ```
 
-## Validate the installation
+## Validate the setup
 
 EntraCP includes special page **TroubleshootEntraCP.aspx**, that can be used to validate the install (or update) was performed correctly, and the [prerequisites]({{< relref "../overview/introduction#prerequisites" >}}) are met.  
 This page is standalone: It does NOT use your EntraCP configuration.  
-It can be found in the central administration > Security.
+It can be found in the central administration > Security.  
+[More info]({{< relref "../help/troubleshooting#use-the-built-in-troubleshooting-page" >}}) about this page.
 
 ## Enable the claims provider
 
