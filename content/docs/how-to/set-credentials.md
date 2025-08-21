@@ -9,7 +9,7 @@ images: []
 toc: true
 ---
 
-Follow this article to set the credentials that EntraCP uses to connect to [your Entra ID tenant](https://entra.microsoft.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/Microsoft_AAD_IAM).
+Follow this article to set the credentials used by EntraCP to connect to [your Entra ID tenant](https://entra.microsoft.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/Microsoft_AAD_IAM).
 
 ## Prerequisites
 

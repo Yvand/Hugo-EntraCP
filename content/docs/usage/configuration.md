@@ -10,13 +10,12 @@ weight: 115
 toc: true
 ---
 
-EntraCP lets you configure many settings through administration pages, or using PowerShell;
+EntraCP lets you configure various settings through administration pages, or using PowerShell:
 
 - [Add the credentials]({{< relref "set-credentials" >}}) to your Entra ID tenant
-- [Set the proxy]({{< relref "docs/how-to/configure-proxy" >}})
+- [Configure the proxy]({{< relref "../how-to/configure-proxy" >}})
 - Enable / disable the augmentation
+- Set the Graph property that identifies the users (members and guests) and the groups
 - Customize the display of the permissions
-- Customize the claim types
 
-The administration pages can be found in the central administration > Security.
-
+The administration pages can be found in the Central Administration > Security.
