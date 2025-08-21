@@ -9,29 +9,29 @@ images: []
 toc: true
 ---
 
-You need to create an app registration in your Microsoft Entra ID tenant, to allow EntraCP to connect.  
+You need to create an app registration in your Entra ID tenant, to allow EntraCP to query it.  
 This article will guide you through the steps to create it.
 
 ## Permissions required
 
 EntraCP connects to your tenant to search for users, groups, and to get the group membership of the users.  
-To achieve this, it needs an app registration in your tenant with the application (not delegated) permissions `GroupMember.Read.All` and `User.Read.All`.
+To achieve this, it needs the application permissions (not delegated) `GroupMember.Read.All` and `User.Read.All`.
 
 ## Create the app registration
 
 {{< tabs "create-app-registration" >}}
 {{< tab "Entra ID portal" >}}
 
-1. Sign-in to your [Microsoft Entra ID tenant](https://entra.microsoft.com/).
-1. Under "Identity", expand "Applications" and click "App Registrations" > "New registration" > Type the following information:
+1. [Connect](https://entra.microsoft.com/) to your Entra ID tenant.
+1. Under **Entra ID**, expand **Applications** and click **App Registrations** > **New registration** > Type the following information:
    - Name: EntraCP
-   - Supported account types: "Accounts in this organizational directory only (Single tenant)"
-1. Click "Register"
-1. Click "API permissions"
+   - Supported account types: **Accounts in this organizational directory only (Single tenant)**
+1. Click **Register**
+1. Click **API permissions**
    - Remove the default permission.
-   - Click "Add a permission" > Select `Microsoft Graph` > "Application permissions", and select `GroupMember.Read.All` and `User.Read.All`.
-   - Click "Grant admin consent for TenantName" > Yes
-1. Click on "Certificates & secrets": EntraCP supports both a certificate and a secret, choose either option depending on your needs.
+   - Click **Add a permission** > Select `Microsoft Graph` > **Application permissions**, and select `GroupMember.Read.All` and `User.Read.All`.
+   - Click **Grant admin consent for TenantName** > **Yes**.
+1. Click on **Certificates & secrets**: EntraCP supports both a certificate and a secret, choose either option depending on your needs.
 
         {{< /tab >}}
         {{< tab "m365 cli" >}}
