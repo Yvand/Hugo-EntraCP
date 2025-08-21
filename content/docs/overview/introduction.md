@@ -43,6 +43,6 @@ EntraCP is highly customizable to adapt to your requirements:
 
 EntraCP cannot be used if:
 
-- SharePoint servers have no network access to Entra ID and Microsoft Graph.
+- SharePoint servers have no network access to Entra ID or Microsoft Graph.
 - Cmdlet `New-SPTrustedIdentityTokenIssuer` was run with the switch `-UseDefaultConfiguration`.
-- It is already associated with a trust, and you want to associate it with a new trust.
+- It is already associated with an **SPTrustedIdentityTokenIssuer**, and you want to associate it with a new one.

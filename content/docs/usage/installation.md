@@ -44,7 +44,7 @@ Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe,
 {{< tabs "install-entracp-type" >}}
 {{< tab "Automated install" >}}
 
-Run the following script on the server running the central administration, in a new PowerShell process:
+Run the following script on the server running the central administration, in a **new** PowerShell process:
 
 ```powershell {title="Automated installation script for EntraCP" lineNos=true}
 <#

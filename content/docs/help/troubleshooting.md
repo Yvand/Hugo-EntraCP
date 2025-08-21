@@ -35,7 +35,7 @@ It is primarily designed to:
 - Test the connectivity to Microsoft Entra ID and Graph.
 
 It is written in inline code, so you can edit it in a simple notepad.  
-For security reasons, by default it can be called only from the central administration, but you can copy it anywhere under `16\TEMPLATE\LAYOUTS`, to call it from a regular SharePoint site.
+For security reasons, by default it can be called only from the central administration, but you can copy it anywhere under `16\TEMPLATE\LAYOUTS`, to call it from a regular SharePoint site, or from a specific server.
 
 ## Test the connectivity with Microsoft Graph
 
