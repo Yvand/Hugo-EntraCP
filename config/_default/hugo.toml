@@ -1,6 +1,5 @@
 title = "EntraCP"
 baseurl = "/"
-canonifyURLs = false
 disableAliases = true
 disableHugoGeneratorInject = true
 # disableKinds = ["taxonomy", "term"]
@@ -8,7 +7,6 @@ enableEmoji = true
 enableGitInfo = true
 enableRobotsTXT = true
 languageCode = "en-US"
-paginate = 10
 rssLimit = 10
 summarylength = 20 # 70 (default)
 
@@ -87,3 +85,7 @@ copyRight = "Copyright (c) 2024 Yvan Duhamel"
 
 [options]
   fullWidth = true
+
+# Add pagination.pagerSize — at the bottom to avoid conflicts
+[pagination]
+  pagerSize = 10
