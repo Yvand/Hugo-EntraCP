@@ -15,19 +15,19 @@ homepage: true
 
 ## Main improvements
 
-* A new, greater design.
-* The SharePoint solution type was changed to `Application` (instead of `Web Front End`), which makes administrative operations (install / update / delete) much easier and safer by design.
-* A single location to configure the proxy for all the SharePoint processes / servers in the farm.
-* Revisited NuGet dependencies, upgraded to their latest versions.
+- A new, greater design.
+- The SharePoint solution type was changed to `Application` (instead of `Web Front End`), which makes administrative operations (install / update / delete) much easier and safer by design.
+- A single location to configure the proxy for all the SharePoint processes / servers in the farm.
+- Revisited NuGet dependencies, upgraded to their latest versions.
 
 ## Overview of the changes
 
-* A new solution name: EntraCP.wsp
-* A new claims provider: EntraCP
-* No compatibility with AzureCP
-* The minimum SharePoint version required is 2016
-* The minimum .NET Framework required is 4.8
-* It no longer works on SharePoint 2013
+- A new solution name: EntraCP.wsp
+- A new claims provider: EntraCP
+- No compatibility with AzureCP
+- The minimum SharePoint version required is 2016
+- The minimum .NET Framework required is 4.8
+- It no longer works on SharePoint 2013
 
 ## Why those changes
 

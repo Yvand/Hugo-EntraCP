@@ -1,25 +1,23 @@
 ---
-title: "Overview"
+title: "Introduction"
 description: ""
 lead: ""
-date: 2023-09-18
-lastmod: 2023-09-18
+date: 2025-05-26T08:14:13Z
+lastmod: 2025-08-21
 draft: false
 images: []
-menu: 
-  docs:
-    parent: ""
-weight: 10
+weight: 100
 toc: true
 ---
 
-This is the documentation for EntraCP.
+EntraCP (formerly AzureCP) is a claims provider that runs in your SharePoint Server farm, to connect it to your Microsoft Entra ID tenant.  
+It is useful in federated authentication (either with [WS-Federation](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial) or [OpenID Connect](https://docs.microsoft.com/en-us/sharepoint/security-for-sharepoint-server/oidc-1-0-authentication)), to improve the user experience and fill some gaps in this scenario.
 
 ## Prerequisites
 
 - SharePoint Subscription Edition, SharePoint 2019 or SharePoint 2016.
 - [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) or newer on all SharePoint servers.
-- **All** SharePoint servers need to be able to connect to Internet.
+- **All** the harePoint servers must be able to connect to Entra ID and Microsoft Graph.
 - An [app registration in your Microsoft Entra ID tenant]({{< relref "register-application" >}}), with the appropriate permissions.
 
 ## Features
@@ -40,3 +38,11 @@ EntraCP is highly customizable to adapt to your requirements:
 - Customizes the claim types and their mapping with Azure AD objects.
 - Enables/disables augmentation.
 - Enables/disables connection to your tenant, to keep EntraCP running with limited functionality if connectivity with your tenant is lost.
+
+## Limitations
+
+EntraCP cannot be used if:
+
+- SharePoint servers have no network access to Entra ID or Microsoft Graph.
+- Cmdlet `New-SPTrustedIdentityTokenIssuer` was run with the switch `-UseDefaultConfiguration`.
+- It is already associated with an **SPTrustedIdentityTokenIssuer**, and you want to associate it with a new one.

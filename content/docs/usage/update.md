@@ -6,10 +6,6 @@ date: 2021-05-20T10:45:52Z
 lastmod: 2021-08-06T11:15:29Z
 draft: false
 images: []
-menu:
-  docs:
-    parent: "usage"
-    identifier: "update"
 weight: 120
 toc: true
 ---
@@ -22,7 +18,7 @@ Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and d
 
 ## Update the assembly bindings
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} Each new release of EntraCP may have unique assembly bindings, depending on the updates made on the dependencies it is using. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Each new release of EntraCP may have unique assembly bindings, depending on the updates made on the dependencies it is using. {{< /callout >}}
 
 Complete the steps below on **all the SharePoint servers**:
 
@@ -42,7 +38,7 @@ Complete the steps below on the server running the central administration:
    ```
 
 1. Visit central administration > System Settings > Manage farm solutions: Wait until solution status shows "Deployed".
-   {{< callout context="caution" title="Important" icon="alert-triangle" >}} Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2. {{< /callout >}}
+   {{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2. {{< /callout >}}
    > If status shows "Error", restart the SharePoint timer service on the servers where the depployment failed, start a new PowerShell process and run `Update-SPSolution` again.
 
 ## Finalize the installation

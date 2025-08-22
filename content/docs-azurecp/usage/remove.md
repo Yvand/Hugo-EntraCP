@@ -3,7 +3,7 @@ title: "Remove"
 description: "Remove AzureCP"
 lead: "Remove AzureCP from your SharePoint farm"
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2025-08-21
 draft: false
 images: []
 menu:
@@ -14,7 +14,11 @@ weight: 190
 toc: true
 ---
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors. {{< /callout >}}
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
+
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors. {{< /callout >}}
 
 ## Reset property ClaimProviderName in the SPTrustedIdentityTokenIssuer
 

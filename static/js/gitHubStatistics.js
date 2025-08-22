@@ -20,11 +20,10 @@ var GitHubStatistics;
                 // mimeType: "application/javascript",
                 jsonpCallback: "GitHubStatistics.RepoStats.parseGitHubStatisticsResponse",
                 url: this.url,
-                success: function (responseData, textStatus, jqXHR) {
-                },
+                success: function (responseData, textStatus, jqXHR) { },
                 error: function (responseData, textStatus, errorThrown) {
                     console.log("Request to " + this.url + " failed: " + errorThrown);
-                }
+                },
             });
         };
         RepoStats.decodeJSONResponse = function (json) {
@@ -41,7 +40,6 @@ var GitHubStatistics;
             // $("#LatestAssetUrl").attr("href", result.LatestAssetUrl)
             //$("#LatestReleaseCreationDate").text(result.LatestReleaseCreationDate);
         };
-        ;
         return RepoStats;
     }());
     GitHubStatistics.RepoStats = RepoStats;

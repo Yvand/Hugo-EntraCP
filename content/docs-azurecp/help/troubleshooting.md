@@ -3,15 +3,15 @@ title: "Troubleshooting"
 description: ""
 lead: "This article groups tips & tricks to help you troubleshoot AzureCP if it's not working as expected."
 date: 2021-05-17T13:24:40Z
-lastmod: 2021-05-17T13:24:40Z
+lastmod: 2025-08-21
 draft: false
 images: []
-menu: 
-  docs-azurecp:
-    parent: "help"
-weight: 910
 toc: true
 ---
+
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
 
 This article groups tips & tricks to help you troubleshoot AzureCP if it's not working as expected.
 
@@ -73,4 +73,4 @@ Once Fiddler was installed locally and its root certificate trusted, you can int
 </system.net>
 ```
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left). {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} To view the traffic in Fiddler, make sure to set the filter to \"All Processes\" or \"Non-Browsers\" (in the bottom left). {{< /callout >}}

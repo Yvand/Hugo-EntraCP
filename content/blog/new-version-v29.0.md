@@ -17,4 +17,4 @@ homepage: false
 Link to this releasae: [Click here](https://github.com/Yvand/EntraCP/releases/tag/v29.0.20250721.38).  
 Changelog in this version: [Click here](https://github.com/Yvand/EntraCP/blob/master/CHANGELOG.md#entracp-v2902025072138---enhancements--bug-fixes---published-in-july-21-2025).  
 To update from a previous version of EntraCP: [Follow this article]({{< relref "/docs/usage/update" >}}).  
-To upgrade from AzureCP: [See this article]({{< relref "/overview/introduction" >}}).
+To upgrade from AzureCP: [See this article]({{< relref "/docs-azurecp/guides/upgrade-to-entracp" >}}).

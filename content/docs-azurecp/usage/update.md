@@ -3,7 +3,7 @@ title: "Update"
 description: "Update AzureCP"
 lead: "Update AzureCP in your SharePoint farm"
 date: 2021-05-20T10:45:52Z
-lastmod: 2023-12-27
+lastmod: 2025-08-21
 draft: false
 images: []
 menu:
@@ -14,23 +14,28 @@ weight: 150
 toc: true
 ---
 
+{{< callout context="danger" title="Danger" icon="outline/alert-octagon" >}}
+AzureCP is outdated and no longer maintained. Follow [this guide](/docs-azurecp/guides/upgrade-to-entracp/) to upgrade to [EntraCP](/docs/overview/introduction).
+{{< /callout >}}
+
 ## Update the solution
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors.<br>Bear in mind that additional steps are required on SharePoint servers which do not run the service 'Microsoft SharePoint Foundation Web Application'. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Always start a new PowerShell process to ensure using up to date persisted objects and avoid nasty errors.<br>Bear in mind that additional steps are required on SharePoint servers which do not run the service 'Microsoft SharePoint Foundation Web Application'. {{< /callout >}}
 
 On the server running the central administration:
 
 1. Start a SharePoint management shell and run `Update-SPSolution`:
 
-  ```powershell
-  # This will start a timer job that will deploy the update on SharePoint servers. Central administration will restart during the process
-  Update-SPSolution -GACDeployment -Identity "AzureCP.wsp" -LiteralPath "F:\Data\Dev\AzureCP.wsp"
-  ```
+```powershell
+# This will start a timer job that will deploy the update on SharePoint servers. Central administration will restart during the process
+Update-SPSolution -GACDeployment -Identity "AzureCP.wsp" -LiteralPath "F:\Data\Dev\AzureCP.wsp"
+```
 
 1. Visit central administration > System Settings > Manage farm solutions: Wait until solution status shows "Deployed".
 
-  {{< callout context="caution" title="Important" icon="alert-triangle" >}} Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2. {{< /callout >}}
-  > If status shows "Error", restart the SharePoint timer service on servers where depployment failed, start a new PowerShell process and run Update-SPSolution again.
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Be patient, cmdlet Update-SPSolution triggers a one-time timer job on the SharePoint servers and this may take a minute or 2. {{< /callout >}}
+
+> If status shows "Error", restart the SharePoint timer service on servers where depployment failed, start a new PowerShell process and run Update-SPSolution again.
 
 ## Finalize the update
 
@@ -64,7 +69,7 @@ $newlogin = "c:0-.t|aadtrust|a5e76528-a305-4345-8481-af345ea56032";
 [Microsoft.SharePoint.Administration.SPFarm]::Local.MigrateGroup($oldlogin, $newlogin);
 ```
 
-{{< callout context="caution" title="Important" icon="alert-triangle" >}} This operation is farm wide and must be tested carefully before it is applied in production environments. {{< /callout >}}
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} This operation is farm wide and must be tested carefully before it is applied in production environments. {{< /callout >}}
 
 Alternatively, administrators can configure AzureCP to use the property DisplayName for the groups, instead of the Id:
 
