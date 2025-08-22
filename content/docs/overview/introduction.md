@@ -17,7 +17,7 @@ It is useful in federated authentication (either with [WS-Federation](https://do
 
 - SharePoint Subscription Edition, SharePoint 2019 or SharePoint 2016.
 - [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48) or newer on all SharePoint servers.
-- **All** the harePoint servers must be able to connect to Entra ID and Microsoft Graph.
+- **All** SharePoint servers must be able to connect to Entra ID and Microsoft Graph.
 - An [app registration in your Microsoft Entra ID tenant]({{< relref "register-application" >}}), with the appropriate permissions.
 
 ## Features
