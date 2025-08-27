@@ -2,37 +2,47 @@
 title: "Configure the proxy"
 description: ""
 lead: ""
-date: 2023-09-14
-lastmod: 2023-12-27
 draft: false
 images: []
 toc: true
 ---
 
-If the SharePoint servers access to internet through a proxy, it must be configured for both EntraCP and Windows (to validate the certificates).
+If the SharePoint servers access to internet through a proxy, it must be configured for both EntraCP and Windows (for certificate validation).
 
 ## Configure the proxy for EntraCP
 
-In EntraCP, the proxy is set directly in EntraCP's configuration (no need to set it on any web.config file).  
-It can be set in the central administration > Security > EntraCP global configuration, or using PowerShell:
+In EntraCP, the proxy is set directly in EntraCP's configuration, there is no need to edit any web.config file.
+
+{{< tabs "add-credentials" >}}
+{{< tab "Central administration" >}}
+
+Browse the central administration > Security > EntraCP global configuration, and locate the section **Proxy**.
+
+{{< /tab >}}
+{{< tab "PowerShell" >}}
+
+Run the script below to set / update the proxy:
 
 ```powershell
 Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
 $config = [Yvand.EntraClaimsProvider.EntraCP]::GetConfiguration()
 $settings = $config.Settings
-$settings.ProxyAddress = "http://localhost:8888"
+$settings.ProxyAddress = "http://localhost:8888" # Set your proxy address here
 $config.ApplySettings($settings, $true)
 ```
 
-## Configure the proxy for certificate validation
+{{< /tab >}}
+{{< /tabs >}}
 
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below need to be applied in all the SharePoint servers of the farm. {{< /callout >}}
+## Configure the proxy for Windows (certificate validation)
+
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below need to be applied on all the servers of the SharePoint farm. {{< /callout >}}
 
 EntraCP connects to Microsoft Graph using HTTPS, and Windows will try to validate the certificates using the links in their CRL.  
-If Windows cannot connect to those links, the typical behavior is random timeouts during a few minutes while using the people picker / EntraCP.  
+If Windows cannot connect to those links, the typical behavior is random timeout while using the people picker / EntraCP.  
 Apply the steps below on each SharePoint server to fully configure the proxy:
 
-- Configure the WinHTTP proxy
+### Configure the WinHTTP proxy
 
 Run netsh as shown below in an elevated command prompt:
 
@@ -45,9 +55,9 @@ netsh winhttp set proxy proxyservername:portnumber bypass-list="*.contoso.local;
 netsh winhttp reset proxy
 ```
 
-- Configure the WinINET proxy machine wide:
+### Configure the WinINET proxy
 
-The PowerShell script below sets the WinINET proxy config machine wide (instead of per-user by default)
+The PowerShell script below sets the WinINET proxy config machine wide (instead of per-user by default).
 
 ```powershell
 # Based on https://blog.workinghardinit.work/2020/03/06/configure-wininet-proxy-server-with-powershell/
