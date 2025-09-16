@@ -9,6 +9,12 @@ toc: true
 
 If the SharePoint servers access to internet through a proxy, it must be configured for both EntraCP and Windows (for certificate validation).
 
+## Limitations
+
+Due to a limitation in .NET Framework 4.8, only HTTP proxies are supported. Setting a HTTPS proxy won't work, and will result in the following error:
+
+`[EntraCP] Unexpected error : Could not authenticate for tenant 'XXX.onMicrosoft.com': NotSupportedException: The ServicePointManager does not support proxies with the https scheme.`
+
 ## Configure the proxy for EntraCP
 
 In EntraCP, the proxy is set directly in EntraCP's configuration, there is no need to edit any web.config file.
