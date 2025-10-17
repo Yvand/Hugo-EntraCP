@@ -356,6 +356,8 @@
       "set-a-new-client-certificate",
       "set-a-new-client-secret",
       "set-the-assembly-bindings",
+      "set-the-proxy",
+      "set-the-proxy-in-entracp-configuration",
       "should-i-update",
       "socialMenu",
       "svg-alert-octagon",

@@ -9,15 +9,18 @@ toc: true
 
 If the SharePoint servers access to internet through a proxy, it must be configured for both EntraCP and Windows (for certificate validation).
 
-## Limitations
+## Configure the proxy for EntraCP
 
-Due to a limitation in .NET Framework 4.8, only HTTP proxies are supported. Setting a HTTPS proxy won't work, and will result in the following error:
+{{< callout context="note" title="Note" icon="outline/info-circle" >}} Do NOT set the proxy in web.config files: EntraCP stores the proxy in its own configuration, and uses it in the whole SharePoint farm. {{< /callout >}}
+
+### Limitations
+
+- The proxy must be in the format **http://host[:port]**.
+- Due to a limitation in .NET Framework 4.8, only a HTTP proxy is supported. Setting a HTTPS proxy will cause the following error:
 
 `[EntraCP] Unexpected error : Could not authenticate for tenant 'XXX.onMicrosoft.com': NotSupportedException: The ServicePointManager does not support proxies with the https scheme.`
 
-## Configure the proxy for EntraCP
-
-In EntraCP, the proxy is set directly in EntraCP's configuration, there is no need to edit any web.config file.
+### Set the proxy in EntraCP configuration
 
 {{< tabs "add-credentials" >}}
 {{< tab "Central administration" >}}
@@ -42,11 +45,12 @@ $config.ApplySettings($settings, $true)
 
 ## Configure the proxy for Windows (certificate validation)
 
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below need to be applied on all the servers of the SharePoint farm. {{< /callout >}}
+Windows needs internet access to check the CRL of the HTTPS certificates, when EntraCP connects to Entra ID.  
+If it cannot connect to the CRL endpoints, the typical behavior is a random timeout while using the people picker / EntraCP.  
 
-EntraCP connects to Microsoft Graph using HTTPS, and Windows will try to validate the certificates using the links in their CRL.  
-If Windows cannot connect to those links, the typical behavior is random timeout while using the people picker / EntraCP.  
-Apply the steps below on each SharePoint server to fully configure the proxy:
+Perform the steps below, on each SharePoint server, to configure the proxy in Windows:
+
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below must be executed on all the servers in your SharePoint farm. {{< /callout >}}
 
 ### Configure the WinHTTP proxy
 
