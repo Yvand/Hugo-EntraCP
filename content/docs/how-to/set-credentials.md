@@ -88,7 +88,7 @@ Run the scripts below to update a connection to your Entra ID tenant using Power
 ```powershell
 Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
 $config = [Yvand.EntraClaimsProvider.EntraCP]::GetConfiguration()
-$config.UpdateTenantCredentials("tenantNameToUpdate", "newClientSecret")
+$config.UpdateTenantCredentials("TENANTNAME.onmicrosoft.com", "newClientSecret")
 $config.Update($true)
 ```
 
@@ -99,7 +99,7 @@ Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicK
 $config = [Yvand.EntraClaimsProvider.EntraCP]::GetConfiguration()
 $newCertificatePath = "C:\YvanData\config\certs\azurecp.aadcert.pfx"
 $newCertificatePassword = "certicicatePassword"
-$config.UpdateTenantCredentials("tenantNameToUpdate", $newCertificatePath, $newCertificatePassword)
+$config.UpdateTenantCredentials("TENANTNAME.onmicrosoft.com", $newCertificatePath, $newCertificatePassword, "")
 $config.Update($true)
 ```
 
