@@ -3,7 +3,7 @@ title: "Configuration"
 description: "Follow this article to configure EntraCP in your SharePoint farm."
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2025-08-21
+lastmod: 2026-01-23
 draft: false
 images: []
 weight: 115
@@ -53,7 +53,7 @@ $config.ApplySettings($settings, $true)
 
 During the augmentation, EntraCP gets the group membership of a user from Entra ID, and sends it to SharePoint. This may happen when users sign-in, when using features such as **Check permissions**, or when processing OAuth2 requests.
 
-{{< callout context="note" title="Note" icon="outline/info-circle" >}} Augmentation works best when the group identifier is the property **Id** (default setting). {{< /callout >}}
+{{< callout context="note" title="Note" icon="outline/info-circle" >}} Augmentation works best when the group identifier is set to property **Id** (default setting). {{< /callout >}}
 
 {{< tabs "configure-augmentation" >}}
 {{< tab "Central administration" >}}
