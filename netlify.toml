@@ -8,6 +8,18 @@
   NPM_VERSION = "10.9.2"
   HUGO_VERSION = "0.148.2"
 
+[context.production]
+  command = "npm ci --include=dev && npm run build"
+
+[context.deploy-preview]
+  command = "npm ci --include=dev && npm run build"
+
+[context.branch-deploy]
+  command = "npm ci --include=dev && npm run build"
+
+[context.next]
+  command = "npm ci --include=dev && npm run build"
+
 [dev]
   framework = "#custom"
   command = "npm run dev"
