@@ -3,7 +3,7 @@ title: "Configuration"
 description: "Follow this article to configure EntraCP in your SharePoint farm."
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2026-01-23
+lastmod: 2026-01-26
 draft: false
 images: []
 weight: 115
@@ -39,8 +39,8 @@ $settings = $config.Settings
 $settings.ClaimTypes.UserIdentifierConfig
 
 # Update the properties for the user identifier
-$settings.ClaimTypes.UpdateUserIdentifier([Yvand.EntraClaimsProvider.Configuration.DirectoryObjectProperty]::MailNickname)
-$settings.ClaimTypes.UpdateIdentifierForGuestUsers([Yvand.EntraClaimsProvider.Configuration.DirectoryObjectProperty]::City)
+$settings.ClaimTypes.UpdateUserIdentifier([Yvand.EntraClaimsProvider.Configuration.DirectoryObjectProperty]::UserPrincipalName)
+$settings.ClaimTypes.UpdateIdentifierForGuestUsers([Yvand.EntraClaimsProvider.Configuration.DirectoryObjectProperty]::Mail)
 
 # Commit the changes
 $config.ApplySettings($settings, $true)
