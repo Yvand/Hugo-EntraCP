@@ -3,7 +3,7 @@ title: "Register your application"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
-lastmod: 2025-08-21
+lastmod: 2026-01-29
 draft: false
 images: []
 toc: true
@@ -16,6 +16,10 @@ This article will guide you through the steps to create it.
 
 EntraCP connects to your tenant to search for users, groups, and to get the group membership of the users.  
 To achieve this, it needs the application permissions (not delegated) `GroupMember.Read.All` and `User.Read.All`.
+
+{{< callout context="note" title="Note" icon="outline/info-circle" >}}
+The less privileged permission `User.ReadBasic.All` cannot be used because it prevents using the property `UserType`, which is essential to determine if the user is a member or a guest. More information [here](https://github.com/Yvand/EntraCP/issues/265).
+{{< /callout >}}
 
 ## Create the app registration
 
@@ -41,7 +45,7 @@ To achieve this, it needs the application permissions (not delegated) `GroupMemb
 ```bash
 m365 login
 # The command will print all the information that EntraCP needs to connect.
-m365 aad app add --name "EntraCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All' --grantAdminConsent
+m365 entra app add --name "EntraCP" --withSecret --apisApplication 'https://graph.microsoft.com/User.Read.All,https://graph.microsoft.com/GroupMember.Read.All' --grantAdminConsent
 ```
 
 {{< /tab >}}
