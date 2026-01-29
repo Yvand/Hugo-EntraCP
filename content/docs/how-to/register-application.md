@@ -18,7 +18,7 @@ EntraCP connects to your tenant to search for users, groups, and to get the grou
 To achieve this, it needs the application permissions (not delegated) `GroupMember.Read.All` and `User.Read.All`.
 
 {{< callout context="note" title="Note" icon="outline/info-circle" >}}
-The less privileged permission `User.ReadBasic.All` cannot be used because it prevents using the property `UserType`, which is essential to determine if the user is a member or a guest. More information [here](https://github.com/Yvand/EntraCP/issues/265).
+The less privileged permission [`User.ReadBasic.All`](https://learn.microsoft.com/en-us/graph/permissions-reference#userreadbasicall) cannot be used because it prevents using the property `UserType`, which is essential to determine if the user is a member or a guest. More information [here](https://github.com/Yvand/EntraCP/issues/265).
 {{< /callout >}}
 
 ## Create the app registration
