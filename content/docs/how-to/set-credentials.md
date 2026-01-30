@@ -3,22 +3,20 @@ title: "Set the credentials"
 description: ""
 lead: ""
 date: 2023-11-30
-lastmod: 2025-08-21
+lastmod: 2026-01-30
 draft: false
 images: []
 toc: true
 ---
 
-Follow this article to set the credentials used by EntraCP to connect to [your Entra ID tenant](https://entra.microsoft.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/Microsoft_AAD_IAM).
+Follow this article to set the credentials EntraCP will use to connect to [your Entra ID tenant](https://entra.microsoft.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/Microsoft_AAD_IAM).
 
 ## Prerequisites
 
 - An app registration [created for EntraCP]({{< relref "register-application" >}}) in your Entra ID tenant.
 - The app registration has either a valid client secret or client certificate.
 
-## Add new credentials to a tenant
-
-The tenant can be added from the EntraCP global configuration page in the central administration, or using PowerShell:
+## Add credentials for a tenant
 
 {{< tabs "add-credentials" >}}
 {{< tab "Central administration" >}}
@@ -26,13 +24,13 @@ The tenant can be added from the EntraCP global configuration page in the centra
 Follow the steps below to add a connection to your Entra ID tenant using the Central Administration:
 
 - Navigate to the SharePoint Central Administration > Security > EntraCP Global configuration.
-- In the section **Register a new Microsoft Entra ID tenant**, fill the fields to add a connection to your tenant.
+- In the section **Register a new Microsoft Entra ID tenant**, fill the required fields.
 - Click on **Add tenant** to save your changes.
 
 {{< /tab >}}
 {{< tab "PowerShell" >}}
 
-Run the script below to add a connection to your Entra ID tenant using Powershell:
+The Powershell script below adds Entra ID tenants using both a client secret and certificate:
 
 ```powershell
 Add-Type -AssemblyName "Yvand.EntraCP, Version=1.0.0.0, Culture=neutral, PublicKeyToken=65dc6b5903b51636"
@@ -62,10 +60,10 @@ $config.Update($true)
 {{< /tab >}}
 {{< /tabs >}}
 
-## Update the credentials of a tenant
+## Update credentials for a tenant
 
 {{< callout context="note" title="Note" icon="outline/info-circle" >}}
-You can use the central administration only if you want to update a client secret. To update a client certificate, use PowerShell
+For credential updates, you can use the central administration only to set a new client secret. To set a new client certificate, use PowerShell
 {{< /callout >}}
 
 {{< tabs "update-credentials" >}}
@@ -81,7 +79,7 @@ Follow the steps below to edit a connection to your Entra ID tenant using the Ce
 {{< /tab >}}
 {{< tab "PowerShell" >}}
 
-Run the scripts below to update a connection to your Entra ID tenant using Powershell:
+The Powershell scripts below update the credentials on an existing Entra ID tenant:
 
 ### Set a new client secret
 
