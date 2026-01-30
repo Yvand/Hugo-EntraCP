@@ -3,7 +3,7 @@ title: "Register your application"
 description: ""
 lead: ""
 date: 2021-05-20T10:45:06Z
-lastmod: 2026-01-29
+lastmod: 2026-01-30
 draft: false
 images: []
 toc: true
@@ -37,8 +37,8 @@ The less privileged permission [`User.ReadBasic.All`](https://learn.microsoft.co
    - Click **Grant admin consent for TenantName** > **Yes**.
 1. Click on **Certificates & secrets**: EntraCP supports both a certificate and a secret, choose either option depending on your needs.
 
-        {{< /tab >}}
-        {{< tab "m365 cli" >}}
+{{< /tab >}}
+{{< tab "m365 cli" >}}
 
 [m365 cli](https://pnp.github.io/cli-microsoft365/) makes the registration very simple: It takes a single command to create the application, create a secret, set the permissions and grant the admin consent:
 
@@ -56,22 +56,23 @@ It can be used in Azure cloud shell or in a local shell:
 
 ```bash
 #!/bin/bash
+set -euo pipefail
 
 # Sign-in to your Entra ID tenant. Use --allow-no-subscriptions if it doesn't have a subscription
 az login #--allow-no-subscriptions
 
-appName="EntraCP shell"
-echo "Create application '$appName'..."
+appName="EntraCP"
+echo "Creating application '$appName'..."
 appId=$(az ad app create --display-name "$appName" --query 'id' -o tsv)
 
-echo "Create service principal for application id '$appId', and gets its objectId (stored in field id)..."
+echo "Creating service principal for application id '$appId', and getting its objectId (stored in field id)..."
 spObjectId=$(az ad sp create --id $appId --query 'id' -o tsv)
 echo "Application '$appName' was created with client id '$appId', and its service principal with objectId '$spObjectId'"
 
-echo "Create client secret for the app id '$appId'..."
+echo "Creating client secret for the app id '$appId'..."
 appSecret=$(az ad app credential reset --id $appId --query 'password' --only-show-errors -o tsv)
 
-# Retrieve the id of each permission to grant
+# Retrieve the id of each permission to add
 microsoftGraphId="00000003-0000-0000-c000-000000000000"
 userPermName="User.Read.All"
 groupPermName="GroupMember.Read.All"
@@ -79,8 +80,8 @@ userPermId=$(az ad sp show --id "$microsoftGraphId" --query "appRoles[?value=='$
 groupPermId=$(az ad sp show --id "$microsoftGraphId" --query "appRoles[?value=='$groupPermName'].id" --output tsv)
 msGraphResourceId=$(az ad sp show --id "$microsoftGraphId" --query "id" --output tsv)
 
-# Add the permissions required to the definition of the application (optional as it is just a declaration of the permissions needed)
-echo "Grant permissions '$userPermName' and '$groupPermName' to the app id '$appId'..."
+# Add those permissions to the application
+echo "Adding permissions '$userPermName' and '$groupPermName' to the app id '$appId'..."
 az ad app update --id $appId --required-resource-accesses "[{
         \"resourceAppId\": \"$microsoftGraphId\",
         \"resourceAccess\": [{
@@ -92,10 +93,10 @@ az ad app update --id $appId --required-resource-accesses "[{
                         \"type\": \"Role\"
                 }
         ]
-        }]"
+}]"
 
-echo "Grant admin consent to Microsoft Graph permissions $userPermName (id '$userPermId') and $groupPermName (id '$groupPermId') for service principal '$spObjectId'..."
 # Grant admin consent by granting permissions to the service principal - https://learn.microsoft.com/en-us/graph/api/serviceprincipal-post-approleassignments
+echo "Granting admin consent on the permissions $userPermName (id '$userPermId') and $groupPermName (id '$groupPermId') for the service principal '$spObjectId'..."
 az rest --method POST \
         --uri "https://graph.microsoft.com/v1.0/servicePrincipals/$spObjectId/appRoleAssignments" \
         --body "{
@@ -112,8 +113,8 @@ az rest --method POST \
         \"appRoleId\": \"$groupPermId\"
         }" 1> /dev/null
 
-echo "Application '$appName' was created successfully with client id '$appId' and client secret '$appSecret'. \
-App-only permissions '$userPermName' and '$groupPermName' were granted, and admin consent applied."
+echo "Application '$appName' was created successfully with client id '$appId' and client secret '$appSecret'."
+echo "App-only permissions '$userPermName' and '$groupPermName' were added, and admin consent granted."
 ```
 
 {{< /tab >}}
