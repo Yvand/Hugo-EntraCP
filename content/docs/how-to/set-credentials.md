@@ -63,7 +63,8 @@ $config.Update($true)
 ## Update credentials for a tenant
 
 {{< callout context="note" title="Note" icon="outline/info-circle" >}}
-For credential updates, you can use the central administration only to set a new client secret. To set a new client certificate, use PowerShell
+The new credentials will replace the existing ones and will be used immediately by EntraCP.  
+You can use the central administration only to set a new client secret. To set a new client certificate, use PowerShell.
 {{< /callout >}}
 
 {{< tabs "update-credentials" >}}
@@ -79,7 +80,7 @@ Follow the steps below to edit a connection to your Entra ID tenant using the Ce
 {{< /tab >}}
 {{< tab "PowerShell" >}}
 
-The Powershell scripts below update the credentials on an existing Entra ID tenant:
+The Powershell scripts below update the credentials for an existing Entra ID tenant:
 
 ### Set a new client secret
 
