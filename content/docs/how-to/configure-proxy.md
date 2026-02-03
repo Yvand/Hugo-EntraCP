@@ -46,7 +46,7 @@ $config.ApplySettings($settings, $true)
 ## Configure the proxy for Windows (certificate validation)
 
 Windows needs internet access to check the CRL of the HTTPS certificates, when EntraCP connects to Entra ID.  
-If it cannot connect to the CRL endpoints, the typical behavior is a random timeout while using the people picker / EntraCP.  
+If it cannot connect to the CRL endpoints, the typical behavior is a random timeout while using the people picker / EntraCP.
 
 Perform the steps below, on each SharePoint server, to configure the proxy in Windows:
 

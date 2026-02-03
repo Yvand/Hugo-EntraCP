@@ -1,5 +1,5 @@
 ---
-title : "EntraCP for SharePoint Server"
+title: "EntraCP for SharePoint Server"
 description: ""
 lead: "EntraCP (formerly AzureCP) is a claims provider that connects SharePoint to your Microsoft Entra ID tenant, in federated authentication."
 date: 2023-09-07T16:33:54+02:00
