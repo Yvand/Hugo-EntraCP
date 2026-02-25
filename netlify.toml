@@ -43,3 +43,9 @@
     Permissions-Policy = "geolocation=(self), microphone=(), camera=()"
     Cache-Control = "max-age=0, must-revalidate, public"
     Access-Control-Allow-Origin = "*"
+
+# Redirects and rewrites — https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
+[[redirects]]
+	from = "/*"
+	to = "/404/"
+	status = 404
