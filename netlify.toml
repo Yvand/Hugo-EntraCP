@@ -13,7 +13,8 @@
   npm install && \
   echo "URL=[$URL]" && \
   # strip CR/newline in $URL before passing to Hugo
-  hugo build --gc --minify --baseURL "$(printf '%s' "$URL" | tr -d '\r\n')"
+  hugo build --gc --minify --baseURL "$(printf '%s' "$URL" | tr -d '\r\n')" \
+  echo "end of build command"
   """
 
 #[context.production]
