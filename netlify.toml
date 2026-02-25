@@ -12,7 +12,7 @@
   git config core.quotepath false && \
   npm install && \
   hugo build --gc --minify \
-  echo "end of build command"
+  echo "URL=[$URL]"
   """
 
 [dev]
