@@ -12,7 +12,8 @@
   git config core.quotepath false && \
   npm install && \
   echo "URL=[$URL]" && \
-  hugo build --gc --minify --baseURL "${URL}"
+  # strip CR/newline in $URL before passing to Hugo
+  hugo build --gc --minify --baseURL "$(printf '%s' "$URL" | tr -d '\r\n')"
   """
 
 #[context.production]
