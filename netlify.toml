@@ -11,21 +11,9 @@
   command = """\
   git config core.quotepath false && \
   npm install && \
-  hugo build --gc --minify --baseURL "${URL}" \
+  hugo build --gc --minify \
   echo "end of build command"
   """
-
-#[context.production]
-  #command = "npm ci --include=dev && npm run build"
-
-#[context.deploy-preview]
-  #command = "npm ci --include=dev && npm run build"
-
-#[context.branch-deploy]
-  #command = "npm ci --include=dev && npm run build"
-
-#[context.next]
-  #command = "npm ci --include=dev && npm run build"
 
 [dev]
   framework = "#custom"
@@ -36,6 +24,10 @@
   autoLaunch = false
 
 # Redirects and rewrites — https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
+[[redirects]]
+	from = "/*"
+	to = "/404/"
+	status = 404
 
 # Custom headers — https://docs.netlify.com/routing/headers/#syntax-for-the-netlify-configuration-file
 [[headers]]
@@ -50,9 +42,3 @@
     Permissions-Policy = "geolocation=(self), microphone=(), camera=()"
     Cache-Control = "max-age=0, must-revalidate, public"
     Access-Control-Allow-Origin = "*"
-
-# Redirects and rewrites — https://docs.netlify.com/routing/redirects/#syntax-for-the-netlify-configuration-file
-[[redirects]]
-	from = "/*"
-	to = "/404/"
-	status = 404
