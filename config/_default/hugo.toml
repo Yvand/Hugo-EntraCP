@@ -1,5 +1,5 @@
 title = "EntraCP"
-baseurl = "/"
+baseurl = "http://localhost/"
 disableAliases = true
 disableHugoGeneratorInject = true
 # disableKinds = ["taxonomy", "term"]
