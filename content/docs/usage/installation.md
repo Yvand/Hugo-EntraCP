@@ -1,43 +1,28 @@
 ---
 title: "Installation"
-description: "This article describes the steps required to install EntraCP in your SharePoint farm."
+description: "This article describes the steps to complete in order to install EntraCP in your SharePoint farm."
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2025-08-21
+lastmod: 2026-03-04
 draft: false
 images: []
 weight: 110
 toc: true
 ---
 
-This article describes the steps required to install EntraCP in your SharePoint farm.
+This article describes the steps to complete in order to install EntraCP in your SharePoint farm.
 
-{{< details "About the installation" >}}
-Installing EntraCP is much easier and safer than AzureCP because it uses the deployment type `ApplicationServer`, which implies that:
+{{< details "Is the install / uninstall procedure of EntraCP in my SharePoint farm safe?" >}}
+Yes. EntraCP solution uses the deployment type `ApplicationServer`, which implies that:
 
-- Its features are installed with a specific, additional step, preventing conflicts.
-- Its assemblies are deployed on truly all SharePoint servers.
-  {{< /details >}}
+- Deploying the solution only copies the files on disk.
+- The features are installed with a specific, additional step, which prevents conflicts.
+- The files are deployed on truly all SharePoint servers.
+{{< /details >}}
 
 ## Download the required assets
 
 Browse to the [latest release](https://github.com/Yvand/EntraCP/releases/) and download the assets `assembly-bindings.config` and `EntraCP.wsp`.
-
-## Set the assembly bindings
-
-{{< details "Why those bindings are needed?" >}}
-EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph/) and [Azure.Identity](https://www.nuget.org/packages/Azure.Identity), which both require assembly bindings to work with .NET Framework 4.8 ([more info](https://nickcraver.com/blog/2020/02/11/binding-redirects/)).
-{{< /details >}}
-{{< details "Why setting them in the machine.config?" >}}
-Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only config file that can propagate the bindings to all is the `machine.config`.
-{{< /details >}}
-
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps below must be completed on all the SharePoint servers, before the solution is deployed. {{< /callout >}}
-
-1. Open the file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config` in a text editor.
-1. Locate the node `runtime` (`<runtime />` or `<runtime>`).
-1. Replace it with the one in the file `assembly-bindings.config`, available in the assets of the each release.
-1. Save the file.
 
 ## Deploy the solution
 
@@ -128,13 +113,29 @@ Do the following on the server running the central administration:
 {{< /tab >}}
 {{< /tabs >}}
 
-## Restart the services
+## Set the assembly bindings
+
+{{< details "Why are those bindings needed?" >}}
+EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph/) and [Azure.Identity](https://www.nuget.org/packages/Azure.Identity), which both require assembly bindings to work with .NET Framework 4.8 ([more info](https://nickcraver.com/blog/2020/02/11/binding-redirects/)).
+{{< /details >}}
+{{< details "Why setting them in the machine.config?" >}}
+Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe, etc...), the only config file that can propagate the bindings to all is the `machine.config`.
+{{< /details >}}
+
+{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} This step must be completed on **all** SharePoint servers, **after** the solution was deployed. {{< /callout >}}
+
+1. Open the file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config` in a text editor.
+2. Locate the node `runtime` (`<runtime />` or `<runtime>`).
+3. Replace it with the one in the file `assembly-bindings.config`, available in the assets of the each release.
+4. Save the file.
+
+<!-- ## Restart the services
 
 On each SharePoint server, restart the IIS and the SharePoint timer services:
 
 ```powershell
 Restart-Service -Name @("W3SVC", "SPTimerV4")
-```
+``` -->
 
 ## Validate the setup
 

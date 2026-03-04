@@ -356,7 +356,6 @@
       "remove-the-assembly-bindings",
       "remove-the-azurecp-solution",
       "reset-property-claimprovidername-in-the-sptrustedidentitytokenissuer",
-      "restart-the-services",
       "run-microsoft-graph-queries-in-postman",
       "search-form",
       "searchModal",
