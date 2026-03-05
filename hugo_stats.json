@@ -298,6 +298,9 @@
       "wrap"
     ],
     "ids": [
+      "1-download-the-required-assets",
+      "2-update-the-solution",
+      "3-update-the-assembly-bindings",
       "LatestReleaseDownloadCount",
       "TableOfContents",
       "TotalDownloadCount",
@@ -324,6 +327,7 @@
       "deploy-the-solution",
       "doks-docs-nav",
       "download-the-required-assets",
+      "download-the-required-assets-1",
       "enable-the-claims-provider",
       "features",
       "finalize-the-installation",
@@ -417,7 +421,10 @@
       "uninstall-entracp",
       "update-credentials-for-a-tenant",
       "update-the-assembly-bindings",
+      "update-the-assembly-bindings-3",
       "update-the-solution",
+      "update-the-solution-2",
+      "update-the-trust-configuration",
       "use-the-built-in-troubleshooting-page",
       "validate-the-setup",
       "website-visitors",
