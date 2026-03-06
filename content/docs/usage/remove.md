@@ -1,23 +1,32 @@
 ---
 title: "Remove"
-description: "This article describes the steps required to remove EntraCP from your SharePoint farm."
+description: "This article describes the steps to complete in order to successfully update EntraCP in your SharePoint farm."
 lead: ""
 date: 2021-05-20T10:45:52Z
-lastmod: 2021-08-06T11:15:29Z
+lastmod: 2026-03-05
 draft: false
 images: []
 weight: 130
 toc: true
 ---
 
-This article describes the steps required to remove EntraCP from your SharePoint farm.
+This article describes the steps to remove in order to successfully update EntraCP in your SharePoint farm.
 
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Do not merely retract the solution! The features must be manually deactivated and uninstalled before the solution is retracted. {{< /callout >}}
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} Do all the operations below on the server running the central administration, and in a new PowerShell process. {{< /callout >}}
+{{< details "Is it safe to (un)install or update EntraCP in my SharePoint farm?" >}}
+Yes, as long as you follow the steps in the documentation, as the solution's deployment type (`ApplicationServer`) means that:
 
-## Reset property ClaimProviderName in the SPTrustedIdentityTokenIssuer
+- Deploying/retracting the solution only copies/removes the files on disk (it does not installs/removes the EntraCP features).
+- The features are installed/removed with a specific step, which prevents conflicts.
+- The files are deployed on truly all SharePoint servers.
 
-Unfortunately, the only supported way to clear the property ClaimProviderName is to remove and recreate the SPTrustedIdentityTokenIssuer object.  
+The biggest risk is a misconfiguration in the assembly bindings, which could prevent SharePoint to run.
+{{< /details >}}
+
+{{< callout context="caution" title="Do not just retract the solution" icon="outline/alert-triangle" >}} EntraCP features must be deactivated and uninstalled **before** the solution is retracted. {{< /callout >}}
+
+## Update the trust configuration
+
+Unfortunately, the only supported way to clear the property `ClaimProviderName` is to remove and recreate the `SPTrustedIdentityTokenIssuer` object.  
 Alternatively, this property can be reset using .NET reflection, but this is not supported and you do this at your own risks:
 
 ```powershell
@@ -113,9 +122,9 @@ This script does the minimum work required in PowerShell, before you can safely 
 
 ## Remove the assembly bindings
 
-{{< callout context="caution" title="Important" icon="outline/alert-triangle" >}} The steps in this section must be completed on all the SharePoint servers, after the solution was uninstalled. {{< /callout >}}
+{{< callout context="caution" title="Steps order" icon="outline/alert-triangle" >}} This step must be completed on **all** SharePoint servers, **after** the solution was uninstalled. {{< /callout >}}
 
-1. Open the `machine.config` file (`%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\Machine.config`) in a text editor.
-1. Locate the node `<runtime>`.
-1. Delete the entire node with its children and replace it with `<runtime />`.
-1. Save the file.
+1. Open file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config` in a text editor.
+2. Locate the XML node `<runtime>`.
+3. Delete the entire node with its children and replace it with `<runtime />`.
+4. Save the file `machine.config`.
