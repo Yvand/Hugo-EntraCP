@@ -13,8 +13,7 @@ toc: true
 This article describes the steps to remove in order to successfully update EntraCP in your SharePoint farm.
 
 {{< details "Is it safe to (un)install or update EntraCP in my SharePoint farm?" >}}
-Yes, as long as you follow the steps in the documentation.  
-Since EntraCP solution uses the deployment type `ApplicationServer`:
+Yes, as long as you follow the steps in the documentation, as the solution's deployment type (`ApplicationServer`) means that:
 
 - Deploying/retracting the solution only copies/removes the files on disk (it does not installs/removes the EntraCP features).
 - The features are installed/removed with a specific step, which prevents conflicts.
@@ -125,7 +124,7 @@ This script does the minimum work required in PowerShell, before you can safely 
 
 {{< callout context="caution" title="Steps order" icon="outline/alert-triangle" >}} This step must be completed on **all** SharePoint servers, **after** the solution was uninstalled. {{< /callout >}}
 
-1. Open `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config` in a text editor.
+1. Open file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config` in a text editor.
 2. Locate the XML node `<runtime>`.
 3. Delete the entire node with its children and replace it with `<runtime />`.
 4. Save the file `machine.config`.

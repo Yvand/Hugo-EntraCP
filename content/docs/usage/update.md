@@ -13,8 +13,7 @@ toc: true
 This article describes the steps to complete in order to successfully update EntraCP in your SharePoint farm.
 
 {{< details "Is it safe to (un)install or update EntraCP in my SharePoint farm?" >}}
-Yes, as long as you follow the steps in the documentation.  
-Since EntraCP solution uses the deployment type `ApplicationServer`:
+Yes, as long as you follow the steps in the documentation, as the solution's deployment type (`ApplicationServer`) means that:
 
 - Deploying/retracting the solution only copies/removes the files on disk (it does not installs/removes the EntraCP features).
 - The features are installed/removed with a specific step, which prevents conflicts.
@@ -23,7 +22,7 @@ Since EntraCP solution uses the deployment type `ApplicationServer`:
 The biggest risk is a misconfiguration in the assembly bindings, which could prevent SharePoint to run.
 {{< /details >}}
 
-{{< callout context="caution" title="Updated steps order" icon="outline/alert-triangle" >}} Ensure to [update the solution](#update-the-solution) **before** [setting the assembly bindings](#set-the-assembly-bindings). {{< /callout >}}
+{{< callout context="caution" title="Updated steps order" icon="outline/alert-triangle" >}} Make sure to [update the solution](#update-the-solution) **before** [setting the assembly bindings](#set-the-assembly-bindings). {{< /callout >}}
 
 ## Download the required assets
 
@@ -46,7 +45,7 @@ Complete the steps below on the server running the central administration:
 
 ## Set the assembly bindings
 
-In this step, you set assembly bindings in the `machine.config` file using the content in file `assembly-bindings.config`, to ensure EntraCP can load its dependencies.
+In this step, you set the assembly bindings in the `machine.config` file using the content in file `assembly-bindings.config`, to ensure EntraCP can load its dependencies.
 
 {{< details "Why are those bindings needed?" >}}
 EntraCP uses NuGet packages [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph/) and [Azure.Identity](https://www.nuget.org/packages/Azure.Identity), which both require assembly bindings to work with .NET Framework 4.8 ([more info](https://nickcraver.com/blog/2020/02/11/binding-redirects/)).
@@ -59,7 +58,7 @@ Since SharePoint runs in many processes (w3wp.exe, owstimer.exe, powershell.exe,
 
 {{< callout context="caution" title="Assembly bindings depend on the EntraCP version" icon="outline/alert-triangle" >}} Make sure to use the `assembly-bindings.config` corresponding to your version of EntraCP, as each release has unique assembly bindings. {{< /callout >}}
 
-1. Open `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config` in a text editor.
+1. Open file `%systemroot%\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config` in a text editor.
 2. Locate the XML node `runtime` (search `<runtime />` or `<runtime>`).
 3. Replace it with the content in the file `assembly-bindings.config`.
 4. Save the file `machine.config`.
